@@ -1,0 +1,48 @@
+page-addon-evaluate-submit-evaluate {
+    h6 {
+        padding-left: 10px;
+    }
+    .box {
+        padding: 10px 0px 0px 0px;
+        background: #ffffff;
+        border: 1px solid #dddddd;
+        color: #3a3a3a;
+        ion-item {
+            margin-top: 10px !important;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            ion-label {
+                margin: 0px !important;
+                white-space: unset;
+                .ionic3-star-rating {
+                    margin-left: 44px;
+                }
+            }
+            ion-textarea {
+                min-height: 100px;
+                height: 100px;
+            }
+        }
+        
+        .item-inner {
+            padding-right: 0px !important;
+        }
+
+        .type_2 {
+            .item-inner {
+                padding-left: 60px !important;
+                padding-right: 0px !important;
+            }
+            ion-label {
+                .ionic3-star-rating {
+                    margin-left: 0px !important;
+                }
+            }
+        }
+        .item-no-border {
+            .item-inner {
+                border-bottom: 0px solid;
+            }
+        }
+    }
+}

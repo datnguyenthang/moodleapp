@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title><core-format-text [text]="siteName"></core-format-text></ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openSearch()" [attr.aria-p]="'core.courses.searchcourses' | translate">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-refresher [enabled]="landingLoaded" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}"></ion-refresher-content>
+    </ion-refresher>
+    <core-loading [hideUntil]="landingLoaded">
+        <div ion-fixed>
+            <div class="box" >
+                <div class="row">
+                        <div class="col" (click)="openCataloguePage('AddonSchoolOfSalesMySchoolOfSalesPage')">
+                            <div id="s-o-s" class="item">
+                                <img src="assets/img/landing/sales.svg">
+                            </div>
+                            <p>{{ 'addon.landing.schoolofsale' | translate }}</p>
+                        </div>
+                        <div class="col" (click)="openCataloguePage('AddonSchoolOfRecoveryMySchoolOfRecoveryPage')">
+                            <div id="s-o-r" class="item">
+                                <img src="assets/img/landing/recovery.svg">
+                            </div>
+                            <p>{{ 'addon.landing.schoolofrecovery' | translate }}</p>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col" (click)="openCataloguePage('AddonFeAcademyMyFeAcademyPage')">
+                            <div id="f-a" class="item">
+                                <img src="assets/img/landing/fe-academy.svg">
+                            </div>
+                            <p>{{ 'addon.landing.feacademy' | translate }}</p>
+                        </div>
+                        <div class="col" (click)="openCataloguePage('AddonMandatoryMyMandatoryPage')">
+                            <div id="m-c" class="item">
+                                <img src="assets/img/landing/mandatory.svg">
+                            </div>
+                            <p>{{ 'addon.landing.mandatorycourse' | translate }}</p>
+                        </div>
+                </div>
+            </div>
+            
+            <div class="block_slider">
+                <div class="slider">
+                    <a *ngFor="let handler of handlers" (click)="openHandler(handler)" title="{{ handler.title | translate }}">
+                        <div class="slide-element">
+                            <div class="slide-img">
+                                <core-icon [name]="handler.icon"></core-icon>
+                            </div>
+                            <p>{{ handler.title | translate}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </core-loading>
+</ion-content>

@@ -1,0 +1,98 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title><core-format-text [text]="siteName"></core-format-text></ion-title>
+        <ion-buttons end>
+            <button *ngIf="searchEnabled" ion-button icon-only (click)="openSearch()" [attr.aria-label]="'core.courses.searchcourses' | translate">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="core-center-view">
+    <core-loading [hideUntil]="pageLoaded">
+        <div>
+            <div text-wrap text-center margin-bottom>
+                <h2>{{ 'addon.evaluate.evaluate' | translate }}</h2>
+            </div>
+
+            <form ion-list>
+                    <h6>{{ 'addon.evaluate.courseinfo' | translate }}</h6>
+                <div  class="box">
+                    
+                    <ion-item>
+                        <ion-label stacked>{{ 'addon.evaluate.coursecode' | translate }}</ion-label>
+                        <ion-label>{{ coursecode }}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>{{ 'addon.evaluate.coursename' | translate }}</ion-label>
+                        <ion-label>{{ evaluateQuestion['coursename'] }}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>{{ 'addon.evaluate.coursestartdate' | translate }}</ion-label>
+                        <ion-label>{{ evaluateQuestion['timestart'] }}</ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label stacked>{{ 'addon.evaluate.fullname' | translate }}</ion-label>
+                        <ion-label>{{ fullname }}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label stacked>{{ 'addon.evaluate.email' | translate }}</ion-label>
+                        <ion-label>{{ email }}</ion-label>
+                    </ion-item>
+                    <ion-item class="item-no-border">
+                        <ion-label stacked>{{ 'addon.evaluate.cmnd' | translate }}</ion-label>
+                        <ion-label>{{ cmnd }}</ion-label>
+                    </ion-item>
+                </div>
+                <h6>{{ 'addon.evaluate.evaluatequestion' | translate }}</h6>
+                <div  class="box">
+                    
+                    <div *ngFor="let question of evaluateQuestion['questions']['type1']" >
+                        <ion-item>
+                            <span>{{ question.content }}</span>
+                            <ionic3-star-rating id="{{ 'rating_' + question.id }}" activeIcon = "ios-star"
+                                                defaultIcon = "ios-star-outline"
+                                                activeColor = "#008446"
+                                                defaultColor = "#008446"
+                                                readonly = "false"
+                                                [rating] = "3">
+                            </ionic3-star-rating>
+                        </ion-item>
+                    </div>
+
+                    <ion-item class="item-no-border">
+                        <ion-label>{{ evaluateQuestion['questions']['type2'][0].content }}</ion-label>
+                    </ion-item>
+                    
+                    <div *ngFor="let question of evaluateQuestion['questions']['type2']" >
+                        <ion-item class="type_2">
+                            <span>{{ question.trainer_name }}</span>
+                            <ionic3-star-rating id="{{ 'rating_' + question.id }}" activeIcon = "ios-star"
+                                                defaultIcon = "ios-star-outline"
+                                                activeColor = "#008446"
+                                                defaultColor = "#008446"
+                                                readonly = "false"
+                                                [rating] = "3">
+                            </ionic3-star-rating>
+                        </ion-item>
+                    </div>
+
+                    <div *ngFor="let question of evaluateQuestion['questions']['type3']; let lst = last;" >
+                        <ion-item>
+                            <ion-label>{{ question.content }}</ion-label>
+                        </ion-item>
+                        <ion-item *ngIf="lst" class="item-no-border">
+                            <ion-textarea rows="3" id="{{ 'comment_' + question.id }}" placeholder="{{ 'addon.evaluate.placeholdercomment' | translate }}"></ion-textarea>
+                        </ion-item>
+                        <ion-item *ngIf="!lst">
+                            <ion-textarea rows="3" id="{{ 'comment_' + question.id }}" placeholder="{{ 'addon.evaluate.placeholdercomment' | translate }}"></ion-textarea>
+                        </ion-item>
+                    </div>
+
+                </div>
+                <button ion-button block (click)="submitEvaluate()">{{ 'addon.evaluate.btnsubmit' | translate }}</button>
+            </form>
+        </div>
+    </core-loading>
+</ion-content>

@@ -1,0 +1,6 @@
+{
+    "qrscanner" : "Máy quét",
+    "qrcode" : "QR Code",
+    "notification": "Camera chưa kích hoạt, nhấn vào nút \"Quét\" để kích hoạt camera.",
+    "scan": "Quét"
+}

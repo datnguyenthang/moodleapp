@@ -1,0 +1,18 @@
+<ion-list no-lines>
+    <div *ngFor="let category of categories" class="item-category">
+    <ion-slides   class="login-slides" slidesPerView="2" >
+
+                <ion-slide class="common first-el">
+                    <ion-card class="card-category-title category-title-background-{{category.id % 10}}" >
+                        <h5 text-uppercase >{{ category.name }}</h5>
+                    </ion-card>
+                </ion-slide>
+               
+                <ion-slide *ngFor="let course of category.courses" class="common" >
+                         <core-courses-course-progress [course]="course" class="core-courseoverview"></core-courses-course-progress>
+                </ion-slide>
+                
+                
+    </ion-slides>
+    </div>
+</ion-list>

@@ -1,0 +1,38 @@
+core-courses-course-list-slide {
+    $color-list: (linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%), #CDDC39, #bb3847, #1470d6, #9C27B0, #FF5722, #2bb530 ,#3F51B5 ,#E91E63 ,#FFC107);
+	ion-slide.common.swiper-slide {
+    	padding: 5px;
+	}
+	ion-card.card-category-title {
+		margin: 0px;
+    	height: 212px;
+    	width: 100%;
+    	text-align: center !important;
+    	display: table;
+    	@for $i from 0 to length($color-list){
+  			&.category-title-background-#{$i} {
+  				background: nth($color-list, $i+1);
+  			}
+		}	
+    	h5{ 
+			color: white;
+			vertical-align: middle;
+    		display: table-cell;
+    		margin: 0 !important;
+    		padding: 5px !important;
+    		word-wrap: break-word;
+    		word-break: break-word;
+		}
+	}
+	div.item-category {
+		margin-left: 5px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		height: 212px; 
+	}
+	ion-row.my-couse-row {
+		margin-left: 5px;
+		margin-top: 5px;
+    	height: 212px; 
+	}
+}

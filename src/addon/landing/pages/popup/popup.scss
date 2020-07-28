@@ -1,0 +1,75 @@
+modal-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+  
+@media not all and (min-height: 600px) and (min-width: 768px) {
+  ion-modal ion-backdrop {
+    visibility: hidden;
+  }
+}
+  
+@media only screen and (min-height: 0px) and (min-width: 0px) {
+  .modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0 !important;
+    width: 100%;
+    height: 100%;
+  }
+}
+ion-app.app-root .ion-page {
+      background-color: transparent !important;
+}
+  
+.main-view{
+    background: transparent;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .5;
+    /*background-color: black;*/
+  }
+  .modal_content {
+    display: block;
+    position: relative;
+    top: calc(50% - (50%/2) - 15px);
+    left: 0;
+    right: 0;
+    /* width: 80%;*/
+    z-index: 1;
+    margin: 0 auto;
+    color: #333;
+    background: transparent;
+    border-radius: 5px;      
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+
+  .close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10000;
+  }
+  .close ion-icon {
+    font-size: 20pt;
+  }
+
+.swiper-pagination-fraction, .swiper-pagination-custom, 
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0px;
+  width: 100%;
+}
+.swiper-slide {
+  img {
+    max-height: 50vh;
+  }
+}

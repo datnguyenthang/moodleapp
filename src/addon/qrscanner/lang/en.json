@@ -1,0 +1,6 @@
+{
+    "qrscanner" : "Scanner",
+    "qrcode" : "QR Code",
+    "notification": "Camera is activating, touch \"Scan\" if camera is not active.",
+    "scan": "Scan"
+}

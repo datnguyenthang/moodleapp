@@ -1,0 +1,251 @@
+page-addon-landing-my-landing {
+	.box {
+        padding-top: 20px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        .row {
+            .col {
+                text-align: center;
+                margin-bottom: 10px;
+                .item {
+                    width: 140px;
+                    height: 140px;
+                    border-radius: 50%;
+                    box-shadow: 1px 1px #5d5252;
+                    margin: auto;
+                    padding: 30px;
+                    text-align: center;
+                    vertical-align: middle;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 3px 5px 6px rgba(0,0,0,0.23);
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                p {
+                    font-weight: 500;
+                    font-size: 16px;
+                    margin: 15px 0px;
+                }
+            }
+
+        	
+        	#s-o-s {
+                background: #5cacc5;
+        	}
+        	#s-o-r {
+                background: #dd8757;
+        	}
+            #f-a {
+               background: #e47381;
+            }
+            #m-c {
+               background: #49c88e;
+            }
+        }
+    }
+    
+    .block_slider {
+        display: flex;
+        overflow: scroll;
+        width: calc(100vw - 20px);
+        margin: 0px 10px;
+        position: fixed;
+        top: calc(100vh - 230px);
+        .slider {
+            display: inherit;
+            margin: auto;
+
+            .slide-element {
+                margin: 0px 10px;
+                text-align: center;
+                justify-content: center;
+                min-width: 90px;
+                .slide-img {
+                    font-size: 50px;
+                    text-align: center;
+                    width: 70px;
+                    height: 70px;
+                    background-color: white;
+                    margin: auto;
+                    line-height: 75px;
+                    color: #008445;
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 3px 5px 6px rgba(0,0,0,0.23);
+                    border-radius: 10px;
+                }
+                p {
+                    margin: 10px 0px;
+                    color: #3a3a3a;
+                }
+            }
+            .slide-element:first-child {
+                margin-left: 0px;
+            }
+            .slide-element:last-child {
+                margin-right: 0px;
+            }
+    
+            a {
+                text-decoration: none;
+            }
+        }
+        
+    }
+
+    
+
+    @media (max-height: 450px) {
+        .box {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            .row {
+                width: 50%;
+
+                .col {
+                    margin-bottom: 10px;
+                    margin: 0px 10px;
+
+                    .item {
+                        width: 140px;
+                        height: 140px;
+                    }
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    @media (max-width: 360px) {
+        .box {
+            .row {
+                .col {
+                    .item {
+                        width: 100px;
+                        height: 100px;
+                        padding: 20px;
+                    }
+                    p {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .block_slider {
+            top: calc(100vh - 210px);
+            .slider {
+                .slide-element {
+                    min-width: 70px;
+                    .slide-img {
+                        font-size: 40px;
+                        width: 60px;
+                        height: 60px;
+                        line-height: 65px;
+                    }
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    @media (max-height: 500px) {
+        .box {
+            .row {
+                .col {
+                    .item {
+                        width: 100px;
+                        height: 100px;
+                        padding: 20px;
+                    }
+                    p {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        .block_slider {
+            position: unset;
+
+            .slider {
+                .slide-element {
+                    min-width: 70px;
+                    .slide-img {
+                        font-size: 40px;
+                        width: 60px;
+                        height: 60px;
+                        line-height: 65px;
+                    }
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    @media (min-height: 720px) {
+        .block_slider {
+            top: calc(100vh - 250px);
+        }
+        
+    }
+
+    @media (min-height: 1024px) {
+        .box {
+            padding-top: 40px;
+            .row {
+                margin: 20px;
+                .col {
+                    margin-bottom: 10px;
+                    margin: 0px 10px;
+
+                    .item {
+                        width: 210px;
+                        height: 210px;
+                        padding: 35px;
+                    }
+                    p {
+                        font-size: 25px;
+                        margin: 30px 0px;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    @media (min-width: 1124px) {
+        .box {
+            padding-top: 40px;
+            .row {
+                margin: 20px;
+                .col {
+                    margin-bottom: 10px;
+                    margin: 0px 10px;
+
+                    .item {
+                        width: 210px;
+                        height: 210px;
+                        padding: 35px;
+                    }
+                    p {
+                        font-size: 25px;
+                        margin: 30px 0px;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

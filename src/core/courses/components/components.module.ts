@@ -24,12 +24,18 @@ import { CoreCoursesCourseListItemComponent } from './course-list-item/course-li
 import { CoreCoursesCourseOptionsMenuComponent } from './course-options-menu/course-options-menu';
 import { CoreCoursesMyCoursesComponent } from './my-courses/my-courses';
 
+//ATS
+import { CoreCoursesCourseListSlideComponent } from '../components/course-list-slide/course-list-slide';
+import { CoreCoursesCourseListGroupComponent } from '../components/course-list-group/course-list-group';
+
 @NgModule({
     declarations: [
         CoreCoursesCourseProgressComponent,
         CoreCoursesCourseListItemComponent,
         CoreCoursesCourseOptionsMenuComponent,
-        CoreCoursesMyCoursesComponent
+        CoreCoursesMyCoursesComponent,
+        CoreCoursesCourseListSlideComponent,
+        CoreCoursesCourseListGroupComponent
     ],
     imports: [
         CommonModule,
@@ -45,7 +51,9 @@ import { CoreCoursesMyCoursesComponent } from './my-courses/my-courses';
         CoreCoursesCourseProgressComponent,
         CoreCoursesCourseListItemComponent,
         CoreCoursesCourseOptionsMenuComponent,
-        CoreCoursesMyCoursesComponent
+        CoreCoursesMyCoursesComponent,
+        CoreCoursesCourseListSlideComponent,
+        CoreCoursesCourseListGroupComponent
     ],
     entryComponents: [
         CoreCoursesCourseOptionsMenuComponent

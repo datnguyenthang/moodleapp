@@ -1,0 +1,17 @@
+<ion-content padding class="main-view">
+    <div class="overlay" (click)="closeHelp()"></div>
+    <div class="modal_content">
+        <!--
+        <div class="close" (click)="closeHelp()">
+            <ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
+        </div>
+        -->
+        <ion-slides class="popup-slides" loop="true" pager="true" autoplay="3000">
+            <ion-slide *ngFor="let slide of data">
+                <a (click)="openActivity(slide.moduleid, slide.courseid, slide.modname)">
+                        <img class="lazy-loaded" src="{{slide.image}}" >
+                </a>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>

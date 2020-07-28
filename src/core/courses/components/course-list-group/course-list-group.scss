@@ -1,0 +1,86 @@
+core-courses-course-list-group {
+    $color-list: (linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%), #CDDC39, #bb3847, #1470d6, #9C27B0, #FF5722, #2bb530 ,#3F51B5 ,#E91E63 ,#FFC107);
+    $list-eight-color: ( rgb(140, 191, 84),rgb(122, 203, 149),rgb(94, 130, 193),rgb(145, 90, 157),rgb(192, 77, 119),rgb(208, 86, 71),rgb(218, 134, 52),rgb(216, 177, 46));
+	ion-slide.common.swiper-slide {
+    	padding: 5px;
+	}
+	.card-category-title {
+		margin: 0px;
+    	min-height: 81px;
+    	max-height: 160.125px;
+    	width: 100%;
+    	text-align: center !important;
+    	display: table;
+    	@for $i from 0 to length($list-eight-color){
+  			&.category-group-title-background-#{$i} {
+  				background: nth($list-eight-color, $i+1);
+  			}
+		}
+		.title-category {
+			width: 100%;
+			margin-right: 10px;
+    		margin-left: 10px;
+    		text-align: left;
+		}
+		.wrap-tag {
+			display: flex;
+    		align-items: center;
+			min-height: 81px;
+			max-height: 120px;
+		}
+		.thumb-category {
+			width: 50px;
+			display: table-cell;
+			margin-left: 10px;
+			position: relative;
+			p {
+				margin: 0px;
+				width: 100%;
+				height: 100%;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}	
+		.ion {
+			color: white;
+    		display: table-cell;
+			float: right;
+			font-size: x-large;
+			font-weight: 600;
+			right: 10px;
+			position: relative;
+		}
+    	h6{ 
+			color: white;
+			vertical-align: middle;
+    		display: table-cell;
+    		margin: 0 !important;
+    		padding: 5px !important;
+    		word-wrap: break-word;
+    		word-break: break-word;
+		}
+		.list-course{
+			margin: 5px;
+			padding: 5px;
+			border-radius: 4px;
+			background: white;
+		}
+		#wrap-course{
+			display: none;
+			opacity: '0';
+		}
+	}
+	div.item-category {
+		margin-left: 5px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+		height: 212px; 
+	}
+	ion-row.my-couse-row {
+		margin-left: 5px;
+		margin-top: 5px;
+    	height: 212px; 
+	}
+}

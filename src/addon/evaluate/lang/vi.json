@@ -1,0 +1,20 @@
+{
+    "evaluatecourse" : "Đánh giá khóa học",
+    "evaluate" : "Đánh giá",
+    "courseinfo" : "Thông tin chương trình",
+    "evaluatequestion" : "Nội dung đánh giá",
+    "coursecode" : "Code chương trình",
+    "coursename" : "Tên chương trình",
+    "coursestartdate" : "Thời gian diễn ra",
+    "fullname" : "Họ và tên",
+    "email" : "Email",
+    "cmnd" : "CMND",
+    "placeholdercomment" : "Nội dung ...",
+    "alerttitle" : "Thông báo",
+    "messagecoursecodeinvalid" : "Code chương trình không hợp lệ",
+    "messagesubmitsuccess" : "Đánh giá khoá học thành công",
+    "messagesubmitfailed" : "Đánh giá khoá học không thành công",
+    "btnnext" : "Tiếp theo",
+    "btnsubmit" : "Hoàn thành",
+    "btnok" : "Ok"
+}

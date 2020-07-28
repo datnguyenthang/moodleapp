@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title (click)="exitQR()"><core-format-text [text]="siteName"></core-format-text></ion-title>
+        <ion-buttons end>
+            <button *ngIf="searchEnabled" ion-button icon-only (click)="openSearch()" [attr.aria-label]="'core.courses.searchcourses' | translate">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="core-center-view">
+    <div class="box" ion-fixed >
+        <form ion-list [formGroup]="credForm" (ngSubmit)="checkcode()">
+            <div text-wrap text-center margin-bottom>
+                <h3>{{ 'addon.evaluate.evaluate' | translate }}</h3>
+            </div>
+            <div class="inputs-control">
+                <ion-item>
+                    <ion-input type="text" name="coursecode" placeholder="{{ 'addon.evaluate.coursecode' | translate }}" formControlName="coursecode" autocapitalize="none" autocorrect="off"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" name="fullname" placeholder="{{ 'addon.evaluate.fullname' | translate }}" formControlName="fullname" autocapitalize="none" autocorrect="off"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" name="email" placeholder="{{ 'addon.evaluate.email' | translate }}" formControlName="email" autocapitalize="none" autocorrect="off" ></ion-input>
+                </ion-item>
+                <ion-item margin-bottom>
+                    <ion-input type="text" name="cmnd" placeholder="{{ 'addon.evaluate.cmnd' | translate }}" formControlName="cmnd" autocapitalize="none" autocorrect="off" ></ion-input>
+                </ion-item>
+                <button ion-button block [disabled]="!credForm.valid">{{ 'addon.evaluate.btnnext' | translate }}</button> 
+            </div>
+            <img class="thumbs-evaluate" src="assets/img/thumbs-evaluate.svg">
+        </form>
+    </div>
+</ion-content>

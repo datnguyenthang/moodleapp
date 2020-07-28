@@ -60,6 +60,11 @@ import { CoreSyncProvider } from '@providers/sync';
 import { CoreFileHelperProvider } from '@providers/file-helper';
 import { CoreCustomURLSchemesProvider } from '@providers/urlschemes';
 
+//ATS
+import { DataService } from '@providers/data.service';
+//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
 // Handlers.
 import { CoreSiteInfoCronHandler } from '@providers/handlers/site-info-cron-handler';
 
@@ -157,6 +162,15 @@ import { AddonQtypeModule } from '@addon/qtype/qtype.module';
 import { AddonStorageManagerModule } from '@addon/storagemanager/storagemanager.module';
 import { AddonFilterModule } from '@addon/filter/filter.module';
 import { AddonModH5PActivityModule } from '@addon/mod/h5pactivity/h5pactivity.module';
+
+//ATS
+import { AddonMandatoryModule } from '@addon/mandatory/mandatory.module';
+import { AddonEvaluateModule } from '@addon/evaluate/evaluate.module';
+import { AddonLandingModule } from '@addon/landing/landing.module';
+import { AddonSchoolOfSalesModule } from '@addon/schoolofsales/schoolofsales.module';
+import { AddonSchoolOfRecoveryModule } from '@addon/schoolofrecovery/schoolofrecovery.module';
+import { AddonFeAcademyModule } from '@addon/feacademy/feacademy.module';
+import { AddonQRScannerModule } from '@addon/qrscanner/qrscanner.module';
 
 import { setSingletonsInjector } from '@singletons/core.singletons';
 
@@ -308,6 +322,12 @@ export const WP_PROVIDER: any = null;
         AddonStorageManagerModule,
         AddonFilterModule,
         AddonModH5PActivityModule,
+
+        //ATS
+        AddonMandatoryModule,
+        AddonEvaluateModule,
+        AddonLandingModule,
+        AddonQRScannerModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -342,6 +362,11 @@ export const WP_PROVIDER: any = null;
         CoreSyncProvider,
         CoreFileHelperProvider,
         CoreCustomURLSchemesProvider,
+        
+        //ATS
+        DataService,
+        BarcodeScanner,
+
         CoreSiteInfoCronHandler,
         {
             provide: HTTP_INTERCEPTORS,
@@ -352,6 +377,8 @@ export const WP_PROVIDER: any = null;
         {provide: COMPILER_OPTIONS, useValue: {}, multi: true},
         {provide: JitCompilerFactory, useClass: JitCompilerFactory, deps: [COMPILER_OPTIONS]},
         {provide: LocationStrategy, useClass: MockLocationStrategy},
+
+        
     ]
 })
 export class AppModule {
