@@ -1,0 +1,26 @@
+<ion-content class="core-center-view">
+        <div class="box">
+            <img *ngIf="!logoUrl" src="assets/img/login_logo_fe.png" class="login-logo-parent" role="presentation">
+            <ion-slides   class="login-slides" pager="true" autoplay="3000">
+                <ion-slide>
+                        <img src="assets/img/login_slides/slide1.png" class="img-slides" role="presentation">
+                        <p class="slogan-text">{{ 'core.login.introone' | translate }}</p>    
+                </ion-slide>
+
+                <ion-slide>
+                    
+                        <img src="assets/img/login_slides/slide2.png" class="img-slides" role="presentation">
+                        <p class="slogan-text">{{ 'core.login.introtwo' | translate }}</p>
+                    
+                </ion-slide>
+
+                <ion-slide>
+                        <img src="assets/img/login_slides/slide3.png" class="img-slides" role="presentation">
+                        <p class="slogan-text">{{ 'core.login.introthree' | translate }}</p>
+                </ion-slide>
+            </ion-slides>
+            
+            
+            <button ion-button block  (click)="goLoginPage()" >{{ 'core.login.loginbutton' | translate }}</button>
+    </div>
+</ion-content>

@@ -1,0 +1,41 @@
+page-core-login-introduction {
+    .box {
+
+        padding: 16px;
+        /*margin: 8px;*/
+        background: $white;
+        max-width: unset !important;
+        width: 100%;
+        /*border: 1px solid $gray;*/
+        height: 100%;
+        ion-slides {
+            height: 70%;
+        }
+        img {
+            max-width: 100%;
+        }
+        img.login-logo {
+            width: 100%;
+            max-width: 300px;
+        }
+        img.login-logo-parent{
+            width: 30%;
+            max-width: 300px;   
+        }
+        img.img-slides{
+            width: 100%;
+            max-width: 300px;   
+        }
+        p.slogan-text{
+            font-size: 12px;
+            margin-top:0px;
+        }
+    }
+    .core-sitename, .core-siteurl {
+        @if $core-fixed-url { display: none; }
+    }
+
+    .item-input {
+        margin-bottom: 20px;
+    }
+}

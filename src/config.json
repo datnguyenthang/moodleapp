@@ -77,9 +77,9 @@
         75.89,
         93.75
     ],
-    "customurlscheme": "moodlemobile",
-    "siteurl": "",
-    "sitename": "",
+    "customurlscheme": "atsmobile",
+    "siteurl": "training.fecredit.com.vn",
+    "sitename": "FE ATS",
     "multisitesdisplay": "",
     "onlyallowlistedsites": false,
     "skipssoconfirmation": false,
