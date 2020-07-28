@@ -504,7 +504,7 @@ export class CoreLoginHelperProvider {
             const url = typeof CoreConfigConstants.siteurl == 'string' ?
                 CoreConfigConstants.siteurl : CoreConfigConstants.siteurl[0].url;
 
-            pageName = 'CoreLoginCredentialsPage';
+            pageName = 'CoreLoginIntroductionPage';
             params = { siteUrl: url };
         } else {
             pageName = 'CoreLoginSitePage';
