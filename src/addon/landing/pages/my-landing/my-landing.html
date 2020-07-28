@@ -45,12 +45,44 @@
                         </div>
                 </div>
             </div>
-            
             <div class="block_slider">
-                <div class="slider">
+                <div>
+                    <ion-label>
+                        {{ 'addon.landing.slider.title' | translate }}
+                    </ion-label>
+                </div>
+                <ion-slides autoplay="3000" loop="true" pager="true">
+                    <ion-slide>
+                        <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide1image/1595911772/Mandatory-Training.jpg">
+                    </ion-slide>
+
+                    <ion-slide>
+                        <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide5image/1595911772/Banner.jpg">
+                    </ion-slide>
+
+                    <ion-slide>
+                        <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide8image/1595911772/FE_Teaser_ATS-Banner2-1349-x-300.png">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide9image/1595911772/9-orientation.png">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide4image/1595911772/banner-bao-ve-CNTT.jpg">
+                    </ion-slide>
+                    
+
+                </ion-slides>
+            </div>
+            <div class="block_tools">
+                <div>
+                    <ion-label>
+                        {{ 'addon.landing.tools.title' | translate }}
+                    </ion-label>
+                </div>
+                <div class="tools">
                     <a *ngFor="let handler of handlers" (click)="openHandler(handler)" title="{{ handler.title | translate }}">
-                        <div class="slide-element">
-                            <div class="slide-img">
+                        <div class="tool-element">
+                            <div class="tool-img">
                                 <core-icon [name]="handler.icon"></core-icon>
                             </div>
                             <p>{{ handler.title | translate}}</p>
