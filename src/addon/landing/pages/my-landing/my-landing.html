@@ -15,36 +15,35 @@
     </ion-refresher>
     <core-loading [hideUntil]="landingLoaded">
         <div ion-fixed>
-            <div class="box" >
-                <div class="row">
-                        <div class="col" (click)="openCataloguePage('AddonSchoolOfSalesMySchoolOfSalesPage')">
-                            <div id="s-o-s" class="item">
-                                <img src="assets/img/landing/sales.svg">
-                            </div>
-                            <p>{{ 'addon.landing.schoolofsale' | translate }}</p>
+            <ion-grid class="box">
+                <ion-row>
+                    <ion-col col-6 col-sm (click)="openCataloguePage('AddonSchoolOfSalesMySchoolOfSalesPage')">
+                        <div id="s-o-s" class="item">
+                            <img src="assets/img/landing/sales.svg">
                         </div>
-                        <div class="col" (click)="openCataloguePage('AddonSchoolOfRecoveryMySchoolOfRecoveryPage')">
-                            <div id="s-o-r" class="item">
-                                <img src="assets/img/landing/recovery.svg">
-                            </div>
-                            <p>{{ 'addon.landing.schoolofrecovery' | translate }}</p>
+                        <p>{{ 'addon.landing.schoolofsale' | translate }}</p>
+                    </ion-col>
+                    <ion-col col-6 col-sm (click)="openCataloguePage('AddonSchoolOfRecoveryMySchoolOfRecoveryPage')">
+                        <div id="s-o-r" class="item">
+                            <img src="assets/img/landing/recovery.svg">
                         </div>
-                </div>
-                <div class="row">
-                        <div class="col" (click)="openCataloguePage('AddonFeAcademyMyFeAcademyPage')">
-                            <div id="f-a" class="item">
-                                <img src="assets/img/landing/fe-academy.svg">
-                            </div>
-                            <p>{{ 'addon.landing.feacademy' | translate }}</p>
+                        <p>{{ 'addon.landing.schoolofrecovery' | translate }}</p>
+                    </ion-col>
+                    <ion-col col-6 col-sm (click)="openCataloguePage('AddonFeAcademyMyFeAcademyPage')">
+                        <div id="f-a" class="item">
+                            <img src="assets/img/landing/fe-academy.svg">
                         </div>
-                        <div class="col" (click)="openCataloguePage('AddonMandatoryMyMandatoryPage')">
-                            <div id="m-c" class="item">
-                                <img src="assets/img/landing/mandatory.svg">
-                            </div>
-                            <p>{{ 'addon.landing.mandatorycourse' | translate }}</p>
+                        <p>{{ 'addon.landing.feacademy' | translate }}</p>
+                    </ion-col>
+                    <ion-col col-6 col-sm (click)="openCataloguePage('AddonMandatoryMyMandatoryPage')">
+                        <div id="m-c" class="item">
+                            <img src="assets/img/landing/mandatory.svg">
                         </div>
-                </div>
-            </div>
+                        <p>{{ 'addon.landing.mandatorycourse' | translate }}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
             <div class="block_slider">
                 <div>
                     <ion-label>
@@ -69,26 +68,27 @@
                     <ion-slide>
                         <img src="https://training.fecredit.com.vn/pluginfile.php/1/theme_atstwo/slide4image/1595911772/banner-bao-ve-CNTT.jpg">
                     </ion-slide>
-                    
-
                 </ion-slides>
             </div>
+
             <div class="block_tools">
                 <div>
                     <ion-label>
                         {{ 'addon.landing.tools.title' | translate }}
                     </ion-label>
                 </div>
-                <div class="tools">
-                    <a *ngFor="let handler of handlers" (click)="openHandler(handler)" title="{{ handler.title | translate }}">
-                        <div class="tool-element">
-                            <div class="tool-img">
-                                <core-icon [name]="handler.icon"></core-icon>
+                <ion-grid class="tools">
+                    <ion-row>
+                        <ion-col col-3 col-sm *ngFor="let handler of handlers" (click)="openHandler(handler)" title="{{ handler.title | translate }}">
+                            <div class="tool-element">
+                                <div class="tool-img">
+                                    <core-icon [name]="handler.icon"></core-icon>
+                                </div>
+                                <p>{{ handler.title | translate}}</p>
                             </div>
-                            <p>{{ handler.title | translate}}</p>
-                        </div>
-                    </a>
-                </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
             </div>
         </div>
     </core-loading>
