@@ -66,11 +66,25 @@ export class AddonLandingProvider {
 
             const preSets = {
                 getFromCache: false,
-                saveToCache: false,
+                saveToCache: true,
                 emergencyCache: false,
             };
 
             return site.read('custom_popup_get_data', data, preSets);
+        });
+    }
+
+    getSlideData(siteId?: string): Promise<any[]> {
+        return this.sitesProvider.getSite(siteId).then((site) => {
+            const data = {};
+
+            const preSets = {
+                getFromCache: false,
+                saveToCache: false,
+                emergencyCache: false,
+            };
+
+            return site.read('theme_atstwo_get_slide_data', data, preSets);
         });
     }
 

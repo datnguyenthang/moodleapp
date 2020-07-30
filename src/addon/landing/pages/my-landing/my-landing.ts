@@ -40,6 +40,9 @@ export class AddonLandingMyLandingPage implements OnDestroy {
     protected isDestroyed;
     protected subscription;
 
+    protected sliders: any;
+    protected slideDatas: any;
+
     handlersLoaded: any;
     handlers: CoreMainMenuHandlerData[];
 
@@ -47,6 +50,10 @@ export class AddonLandingMyLandingPage implements OnDestroy {
                 private navCtrl: NavController, private domUtils: CoreDomUtilsProvider) {
         this.loadSiteName();
         this.landingProvider.initPopup();
+        this.landingProvider.getSlideData().then(result => {
+            this.sliders = result;
+            this.slideDatas = this.sliders.data;
+        });
     }
     /**
      * Go to specific page.
@@ -89,7 +96,7 @@ export class AddonLandingMyLandingPage implements OnDestroy {
     ionViewDidLoad(): void {
         this.landingLoaded = true;
         this.loadCustomHandler();
-
+        this.loadSlideData();
     }
 
     loadCustomHandler(): void {
@@ -111,6 +118,13 @@ export class AddonLandingMyLandingPage implements OnDestroy {
             });
 
             this.handlersLoaded = this.menuDelegate.areHandlersLoaded();
+        });
+    }
+
+    loadSlideData(): void {
+        this.landingProvider.getSlideData().then(result => {
+            this.sliders = result;
+            this.slideDatas = this.sliders.data;
         });
     }
 
