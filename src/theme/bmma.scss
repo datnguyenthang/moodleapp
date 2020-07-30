@@ -1,3 +1,5 @@
-$core-color:             #008446 !default;
-$toolbar-background:     #008446 !default;
-$tabs-background:        $white !default;
+$core-color:                #008446 !default;
+$toolbar-background:          $core-color !default;
+$tabs-background:             $white !default;
+$tabs-tab-color-inactive:     $black !default;
+$ion-tabs-badge-color:        $core-color !default;

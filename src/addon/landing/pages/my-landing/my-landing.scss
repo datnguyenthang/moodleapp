@@ -3,19 +3,19 @@ page-addon-landing-my-landing {
         background-color: #ffffff;
         .box {
             padding-top: 20px;
-            max-width: 700px;
+            max-width: 40rem;
             margin-left: auto;
             margin-right: auto;
             .row {
                 .col {
                     text-align: center;
                     .item {
-                        width: 100px;
-                        height: 100px;
+                        width: 11rem;
+                        height: 11rem;
                         border-radius: 50%;
                         box-shadow: 1px 1px #5d5252;
                         margin: auto;
-                        padding: 20px;
+                        padding: 2rem;
                         text-align: center;
                         vertical-align: middle;
                         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 3px 5px 6px rgba(0,0,0,0.23);
@@ -26,8 +26,8 @@ page-addon-landing-my-landing {
                         }
                     }
                     p {
-                        font-size: 15px;
-                        margin: 15px 0px;
+                        font-size: medium;
+                        margin: 15px 0px 10px 0px;
                     }
                 }
                 
@@ -107,6 +107,72 @@ page-addon-landing-my-landing {
         
                 a {
                     text-decoration: none;
+                }
+            }
+        }
+        @media (min-width: 768px) and (min-height: 1024px) {
+            .box {
+                max-width: 60rem;
+                .row {
+                    .col {
+                        .item {
+                            width: 20rem;
+                            height: 20rem;
+                            padding: 4rem;
+                        }
+                        p {
+                            font-size: large;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: 1024px) and (min-height: 768px) {
+            .box {
+                max-width: 60rem;
+                .row {
+                    .col {
+                        .item {
+                            width: 20rem;
+                            height: 20rem;
+                            padding: 4rem;
+                        }
+                        p {
+                            font-size: large;
+                        }
+                    }
+                }
+            }
+        }
+        @media (min-width: 1200px) and (min-height: 2100px) {
+            .box {
+                max-width: 120rem;
+                padding-top: 10rem;
+                padding-bottom: 7rem;
+                .row {
+                    .col {
+                        .item {
+                            width: 35rem;
+                            height: 35rem;
+                            padding: 7rem;
+                        }
+                        p {
+                            padding: 2rem 0rem;
+                        }
+                    }
+                }
+            }
+
+            .block_tools {
+                .tools {
+                    .tool-element {
+                        .tool-img {
+                            font-size: 6rem;
+                            width: 10rem;
+                            height: 10rem;
+                            line-height: 10rem;
+                        }
+                    }
                 }
             }
         }
