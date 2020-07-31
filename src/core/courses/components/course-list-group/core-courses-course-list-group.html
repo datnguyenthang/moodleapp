@@ -1,63 +1,32 @@
-<ng-container *ngIf="categories && categories.length > 1; then muchBlock; else oneBlock;">
-</ng-container>
+<ng-container *ngIf="categories && categories.length > 2; then blockcategory"></ng-container>
 
-<ng-template #muchBlock>
-    <div *ngFor="let category of categories; index as i" class="item-group-category">
-        <div [@openCloseGroup]="category.selected ? 'open' : 'closed'" class="card-category-title category-group-title-background-{{i%8}}" >
-            <div class="wrap-tag" [ngStyle]="{'height.px': ( ( deviceHeight - (47.5 * 2) ) /categories.length )}" (click)="showContent(i)">
-
-                <!--<img class="thumb-category" src="assets/img/thumbs/img-my-course.png"/>-->
-                <div *ngIf="category.description; then description ;else noDescription"></div>
-                <ng-template #description>
-                    <div class="thumb-category" [innerHTML]="category.description">
-                    </div>
-                </ng-template>
-                <ng-template #noDescription>
-                    <div class="thumb-category">
-                        <p><img src="assets/img/thumbs/img-my-course.png"/></p>
-                    </div>
-                </ng-template>
-                
-                <div class="title-category">
-                    <h6 text-uppercase >{{ category.name }}</h6>    
+<ng-template #blockcategory>
+<ion-grid class="tab-category">
+    <ion-row>
+        <ion-col col-3 col-sm *ngFor="let category of categories; index as i" 
+            title="{{ category.name }}" (click)="showContent(i)" 
+            [class]="category.selected ? 'active' : category.iconClassString">
+            
+            <div *ngIf="category.description; then description ;else noDescription"></div>
+            <ng-template #description>
+                <div class="thumb-category" [innerHTML]="category.description"></div>
+            </ng-template>
+            <ng-template #noDescription>
+                <div class="thumb-category">
+                    <ion-icon name="ios-folder-outline"></ion-icon>
                 </div>
-                <ion-icon [ngClass]="category.iconClassString ? category.iconClassString : classString.forward"></ion-icon>
-            </div>
-            <div [@openCloseCourse]="category.selected ? 'open' : 'closed'" id="wrap-course">
-                <div *ngFor="let course of category.courses" class="list-course" >
-                    <core-courses-course-progress [course]="course" class="core-courseoverview"></core-courses-course-progress>
-                </div>  
-            </div>
-        </div>
-    </div>
-</ng-template>
-<ng-template #oneBlock>
-    <div *ngFor="let category of categories; index as i" class="item-group-category">
-        <div style="display: table;" class="card-category-title category-group-title-background-{{i%8}}" >
-            <div class="wrap-tag" [ngStyle]="{'height.px': 81}" (click)="showContent(i)">
+            </ng-template>
+            <ion-label class="title-category">{{ category.name }}</ion-label>
 
-                <!--<img class="thumb-category" src="assets/img/thumbs/img-my-course.png"/>-->
-                <div *ngIf="category.description; then description ;else noDescription"></div>
-                <ng-template #description>
-                    <div class="thumb-category"  [innerHTML]="category.description">
-                    </div>
-                </ng-template>
-                <ng-template #noDescription>
-                    <div class="thumb-category">
-                        <p><img src="assets/img/thumbs/img-my-course.png"/></p>
-                    </div>
-                </ng-template>
-
-                <div class="title-category">
-                    <h6 text-uppercase >{{ category.name }}</h6>    
-                </div>
-                <ion-icon class="ion ion-ios-arrow-dropdown"></ion-icon>
-            </div>
-            <div style="display: block;" id="wrap-course">
-                <div *ngFor="let course of category.courses" class="list-course" >
-                    <core-courses-course-progress [course]="course" class="core-courseoverview"></core-courses-course-progress>
-                </div>  
-            </div>
-        </div>
-    </div>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 </ng-template>
+
+<div *ngFor="let category of categories; index as i" [@openCloseCourse]="category.selected ? 'open' : 'closed'" class="item-group-category">
+    <div id="wrap-course" class="list-course">
+        <div *ngFor="let course of category.courses" class="course-item" >
+            <core-courses-course-progress [course]="course"></core-courses-course-progress>
+        </div>  
+    </div>
+</div>

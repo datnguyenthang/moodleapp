@@ -1,86 +1,72 @@
+
 core-courses-course-list-group {
-    $color-list: (linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%), #CDDC39, #bb3847, #1470d6, #9C27B0, #FF5722, #2bb530 ,#3F51B5 ,#E91E63 ,#FFC107);
-    $list-eight-color: ( rgb(140, 191, 84),rgb(122, 203, 149),rgb(94, 130, 193),rgb(145, 90, 157),rgb(192, 77, 119),rgb(208, 86, 71),rgb(218, 134, 52),rgb(216, 177, 46));
-	ion-slide.common.swiper-slide {
-    	padding: 5px;
-	}
-	.card-category-title {
-		margin: 0px;
-    	min-height: 81px;
-    	max-height: 160.125px;
-    	width: 100%;
-    	text-align: center !important;
-    	display: table;
-    	@for $i from 0 to length($list-eight-color){
-  			&.category-group-title-background-#{$i} {
-  				background: nth($list-eight-color, $i+1);
-  			}
-		}
-		.title-category {
-			width: 100%;
-			margin-right: 10px;
-    		margin-left: 10px;
-    		text-align: left;
-		}
-		.wrap-tag {
-			display: flex;
-    		align-items: center;
-			min-height: 81px;
-			max-height: 120px;
-		}
-		.thumb-category {
-			width: 50px;
-			display: table-cell;
-			margin-left: 10px;
-			position: relative;
-			p {
-				margin: 0px;
-				width: 100%;
-				height: 100%;
-				img {
-					width: 100%;
-					height: 100%;
+	.tab-category {
+		background-color: $white;
+		margin: 0px !important;
+		padding: 0px !important;
+		ion-row {
+			flex-wrap: unset;
+			overflow: scroll;
+			margin: 0px !important;
+			padding: 0px !important;
+			ion-col {
+				padding: 10px 5px !important;
+				text-align: center;
+				justify-content: center;
+				margin: 5px;
+				border-radius: 5px;
+				font-weight: bold;
+				border: 1px solid #00000014;
+				color: #39734b;
+
+				.thumb-category {
+					width: 3rem;
+					height: 3rem;
+					margin: auto;
+					p {
+						margin: 0px;
+						img {
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.icon {
+						font-size: 3.5rem;
+    					color: $core-color;
+					}
+				}
+				.title-category {
+					font-size: smaller;
+					text-overflow: unset;
+					white-space: unset;
+					margin: 10px 0px 0px 0px;
 				}
 			}
-		}	
-		.ion {
-			color: white;
-    		display: table-cell;
-			float: right;
-			font-size: x-large;
-			font-weight: 600;
-			right: 10px;
-			position: relative;
+			.active {
+				background-color: #50c878;
+				border: 1px solid #50c878;
+				.title-category {
+					color: $white;
+				}
+			}
 		}
-    	h6{ 
-			color: white;
-			vertical-align: middle;
-    		display: table-cell;
-    		margin: 0 !important;
-    		padding: 5px !important;
-    		word-wrap: break-word;
-    		word-break: break-word;
-		}
+	}
+	.item-group-category {
+		width: 100%;
+		padding: 7px;
+		background-color: #fff;
+		display: none;
 		.list-course{
-			margin: 5px;
-			padding: 5px;
-			border-radius: 4px;
-			background: white;
+			padding: 0px;
+			margin: 0px;
+			.course-item {
+				margin: 10px 0;
+				border-radius: 1rem;
+				background-color: $white;
+				padding: 10px 8px 10px 15px;
+				box-shadow: 0 0 5px #00000030;
+    			border: 1px solid #00000014;
+			}
 		}
-		#wrap-course{
-			display: none;
-			opacity: '0';
-		}
-	}
-	div.item-category {
-		margin-left: 5px;
-		margin-top: 5px;
-		margin-bottom: 10px;
-		height: 212px; 
-	}
-	ion-row.my-couse-row {
-		margin-left: 5px;
-		margin-top: 5px;
-    	height: 212px; 
 	}
 }

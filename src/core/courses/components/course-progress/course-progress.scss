@@ -1,25 +1,16 @@
 core-courses-course-progress {
-    .course-item {
-        display: flex;
-        align-items: center;
+    color: #3f704d;
+    .course-title {
+        margin: 0 0 0 14px !important;
+        font-size: medium;
+        line-height: 2rem;
+        overflow: unset;
+        text-overflow: unset;
+        white-space: unset;
+        word-break: break-word;
     }
-    img.thumb-course {
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-    }
-    .course-content {
-        width: 100%;
-        padding-left: 7px;
-    }
-    p.course-title {
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: #008543;
-        float: left;
-        width: 100%;
-        text-align: left;
-        overflow: hidden;
-        height: 32px;
+    .thumb-course {
+        font-size: 3rem;
+        color: #3f704dd1;
     }
 }

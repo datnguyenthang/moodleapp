@@ -214,10 +214,15 @@ export class AddonSchoolOfSalesMySchoolOfSalesPage implements OnDestroy {
                     }
                 });
             });
-            categoryList.sort((a, b) => {
-                return a.id - b.id;
-            });
+
             this.filteredCategory = categoryList;
+
+            // NGHE-TC: select firt category
+            if(this.filteredCategory.length > 0) {
+                this.filteredCategory[0].selected = true;
+            }
+            //==========================
+            
             this.courses.filter = '';
             this.showFilter = false;
             this.filteredCourses = this.courses[this.courses.selected];
@@ -266,17 +271,6 @@ export class AddonSchoolOfSalesMySchoolOfSalesPage implements OnDestroy {
                     });
                 }));
             }
-
-            /*
-            return Promise.all(promises).then(() => {
-                return courses.sort((a, b) => {
-                    const compareA = a.fullname.toLowerCase(),
-                        compareB = b.fullname.toLowerCase();
-
-                    return compareA.localeCompare(compareB);
-                });
-            });
-            */
 
             return courses;
         });

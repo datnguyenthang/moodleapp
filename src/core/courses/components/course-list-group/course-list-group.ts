@@ -29,17 +29,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     selector: 'core-courses-course-list-group',
     animations: [
         trigger('openCloseGroup', [
-            state('open', style({
-                'min-height': '160px'
-            })),
-            state('closed', style({
-                height: '82px'
-            })),
-            transition('open => closed', [
-                animate('0.2s')
-            ]),
             transition('closed => open', [
-                animate('0.2s')
+                animate('0.1s')
             ]),
         ]),
         trigger('openCloseCourse', [
@@ -49,9 +40,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
             state('closed', style({
                 display: 'none'
             })),
-            transition('open => closed', [
-                animate('0.1s')
-            ]),
             transition('closed => open', [
                 animate('0.1s')
             ]),
@@ -65,7 +53,7 @@ export class CoreCoursesCourseListGroupComponent implements OnInit, OnDestroy {
     protected courseStatusObserver;
     protected siteUpdatedObserver;
     protected deviceHeight;
-    protected classString = {forward : 'ion ion-ios-arrow-dropright', arrow_down : 'ion ion-ios-arrow-dropdown'};
+    protected classString = {active : 'active', unactive : ''};
 
     constructor(platform: Platform) {
         platform.ready().then((readySource) => {
@@ -78,17 +66,14 @@ export class CoreCoursesCourseListGroupComponent implements OnInit, OnDestroy {
     showContent(index: number): void {
       this.categories.forEach( (el, i) => {
         if (index !== i) {
-          el.iconClassString = this.classString.forward;
+          el.iconClassString = this.classString.unactive;
           el.selected = false;
         }
       });
+      
       console.log(this.categories);
-      this.categories[index].selected = !this.categories[index].selected;
-      if ( this.categories[index].selected ) {
-        this.categories[index].iconClassString = this.classString.arrow_down;
-      } else {
-        this.categories[index].iconClassString = this.classString.forward;
-      }
+      this.categories[index].selected = true;
+      this.categories[index].iconClassString = this.classString.active;
     }
     /**
      * Component being initialized.
