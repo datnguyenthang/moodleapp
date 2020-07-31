@@ -32,7 +32,6 @@ core-courses-course-list-group {
 					}
 					.icon {
 						font-size: 3.5rem;
-    					color: $core-color;
 					}
 				}
 				.title-category {
@@ -45,9 +44,7 @@ core-courses-course-list-group {
 			.active {
 				background-color: #50c878;
 				border: 1px solid #50c878;
-				.title-category {
-					color: $white;
-				}
+				color: $white;
 			}
 		}
 	}
