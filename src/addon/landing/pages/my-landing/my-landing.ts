@@ -29,6 +29,7 @@ import { CoreMainMenuHandlerData, CoreMainMenuDelegate } from '@core/mainmenu/pr
 @Component({
     selector: 'page-addon-landing-my-landing',
     templateUrl: 'my-landing.html',
+    
 })
 export class AddonLandingMyLandingPage implements OnDestroy {
     @ViewChild(CoreTabsComponent) tabsComponent: CoreTabsComponent;

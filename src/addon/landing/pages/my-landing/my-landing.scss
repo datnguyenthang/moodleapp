@@ -1,4 +1,8 @@
 page-addon-landing-my-landing {
+    @keyframes scalein {
+        from {transform: scale(1,1);}
+        to {transform: scale(1.2,1.2);}
+    }
     .content-ios {
         background-color: #ffffff;
         .box {
@@ -32,16 +36,45 @@ page-addon-landing-my-landing {
                 }
                 
                 #s-o-s {
-                    background: #5cacc5;
+                    animation-name: scalein;
+                    animation-duration: 1s;
+                    animation-iteration-count: 4;
+                    animation-delay: 2s;
+                    animation-direction: alternate;
+                    
+                    .item {
+                        background: #5cacc5;
+                    }
                 }
                 #s-o-r {
-                    background: #dd8757;
+                    animation-name: scalein;
+                    animation-duration: 1s;
+                    animation-iteration-count: 4;
+                    animation-delay: 6s;
+                    animation-direction: alternate;
+                    .item {
+                        background: #dd8757;
+                    }
                 }
                 #f-a {
-                background: #e47381;
+                    animation-name: scalein;
+                    animation-duration: 1s;
+                    animation-iteration-count: 4;
+                    animation-delay: 10s;
+                    animation-direction: alternate;
+                    .item {
+                        background: #e47381;
+                    }
                 }
                 #m-c {
-                background: #49c88e;
+                    animation-name: scalein;
+                    animation-duration: 1s;
+                    animation-iteration-count: 4;
+                    animation-delay: 14s;
+                    animation-direction: alternate;
+                    .item {
+                        background: #49c88e;
+                    }
                 }
             }
         }
