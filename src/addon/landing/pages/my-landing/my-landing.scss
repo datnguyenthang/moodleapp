@@ -37,8 +37,8 @@ page-addon-landing-my-landing {
                 
                 #s-o-s {
                     animation-name: scalein;
-                    animation-duration: 1s;
-                    animation-iteration-count: 4;
+                    animation-duration: 0.5s;
+                    animation-iteration-count: 2;
                     animation-delay: 2s;
                     animation-direction: alternate;
                     
@@ -48,9 +48,9 @@ page-addon-landing-my-landing {
                 }
                 #s-o-r {
                     animation-name: scalein;
-                    animation-duration: 1s;
-                    animation-iteration-count: 4;
-                    animation-delay: 6s;
+                    animation-duration: 0.5s;
+                    animation-iteration-count: 2;
+                    animation-delay: 3s;
                     animation-direction: alternate;
                     .item {
                         background: #dd8757;
@@ -58,9 +58,9 @@ page-addon-landing-my-landing {
                 }
                 #f-a {
                     animation-name: scalein;
-                    animation-duration: 1s;
-                    animation-iteration-count: 4;
-                    animation-delay: 10s;
+                    animation-duration: 0.5s;
+                    animation-iteration-count: 2;
+                    animation-delay: 4s;
                     animation-direction: alternate;
                     .item {
                         background: #e47381;
@@ -68,9 +68,9 @@ page-addon-landing-my-landing {
                 }
                 #m-c {
                     animation-name: scalein;
-                    animation-duration: 1s;
-                    animation-iteration-count: 4;
-                    animation-delay: 14s;
+                    animation-duration: 0.5s;
+                    animation-iteration-count: 2;
+                    animation-delay: 5s;
                     animation-direction: alternate;
                     .item {
                         background: #49c88e;
