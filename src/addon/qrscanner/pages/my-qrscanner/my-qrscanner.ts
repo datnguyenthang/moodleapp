@@ -21,7 +21,7 @@ import { CoreAppProvider } from '@providers/app';
 import { CoreTabsComponent } from '@components/tabs/tabs';
 import { AddonQRScannerProvider } from '../../providers/qrscanner';
 import { TranslateService } from '@ngx-translate/core';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 /**
  * Page that displays the list of calendar events.
