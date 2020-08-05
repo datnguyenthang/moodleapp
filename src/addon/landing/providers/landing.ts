@@ -96,7 +96,7 @@ export class AddonLandingProvider {
     initPopup(): void {
         this.getPopUpData().then((data) => {
 
-            if (!data) return;
+            if (data.length == 0) return '';
 
            const opts = {
             showBackdrop: true,
