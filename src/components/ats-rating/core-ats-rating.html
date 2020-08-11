@@ -1,0 +1,96 @@
+<core-loading [hideUntil]="ratingLoaded">
+    <ng-container *ngIf="isEnableRating; then blockRating"></ng-container>
+    <ng-template #blockRating>
+        <div class="row">
+            <ion-label>{{ 'core.atsrating.title' | translate }}</ion-label>
+            <ionic3-star-rating activeIcon = "md-star"
+                                defaultIcon = "md-star-outline"
+                                activeColor = "#a6e72d"
+                                defaultColor = "#a6e72d"
+                                readonly = "{{ isReadonly }}"
+                                maxRating = 5
+                                rating = "{{ userVote }}"
+                                (ratingChanged) = "ratingChange($event)" >
+            </ionic3-star-rating>
+        </div>
+        <div class="row detail-rating">
+            <div class="average-rating">
+                <span class="point">{{ averageRating }}</span>
+                <br>
+                <span>({{ totalRating }}) {{ 'core.atsrating.label.rating' }}</span>
+            </div>
+            <div class="detail">
+                <div class="item">
+                    <div>({{ratingData.typefive}})</div>
+                    <div>
+                        <ionic3-star-rating activeIcon = "md-star"
+                                            defaultIcon = "md-star-outline"
+                                            activeColor = "#a6e72d"
+                                            defaultColor = "#a6e72d"
+                                            readonly = "true"
+                                            maxRating = "5"
+                                            rating = "5">
+                        </ionic3-star-rating>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div>({{ratingData.typefour}})</div>
+                    <div>
+                        <ionic3-star-rating activeIcon = "md-star"
+                                        defaultIcon = "md-star-outline"
+                                        activeColor = "#a6e72d"
+                                        defaultColor = "#a6e72d"
+                                        readonly = "true"
+                                        maxRating = "4"
+                                        rating = "4">
+                        </ionic3-star-rating>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>({{ratingData.typethree}})</div>
+                    <div>
+                        <ionic3-star-rating activeIcon = "md-star"
+                                        defaultIcon = "md-star-outline"
+                                        activeColor = "#a6e72d"
+                                        defaultColor = "#a6e72d"
+                                        readonly = "true"
+                                        maxRating = "3"
+                                        rating = "3">
+                        </ionic3-star-rating>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>({{ratingData.typetwo}})</div>
+                    <div>
+                        <ionic3-star-rating activeIcon = "md-star"
+                                        defaultIcon = "md-star-outline"
+                                        activeColor = "#a6e72d"
+                                        defaultColor = "#a6e72d"
+                                        readonly = "true"
+                                        maxRating = "2"
+                                        rating = "2">
+                        </ionic3-star-rating>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>({{ratingData.typeone}})</div>
+                    <div>
+                        <ionic3-star-rating activeIcon = "md-star"
+                                        defaultIcon = "md-star-outline"
+                                        activeColor = "#a6e72d"
+                                        defaultColor = "#a6e72d"
+                                        readonly = "true"
+                                        maxRating = "1"
+                                        rating = "1">
+                        </ionic3-star-rating>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </ng-template>
+</core-loading>

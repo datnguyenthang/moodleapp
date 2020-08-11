@@ -1,0 +1,68 @@
+addon-mod-url-index {
+    ion-list {
+        margin-bottom: 5px !important;
+        ionic3-star-rating {
+            padding-right: 5px !important;
+            ion-icon {
+                font-size: 2.5rem !important;
+            }
+        }
+    }
+}
+core-ats-rating {
+    .row {
+        background-color: $white;
+        ion-label {
+            margin-left: 8px !important;
+            line-height: 3rem;
+        }
+        ionic3-star-rating {
+            padding-right: 5px;
+            ion-icon {
+                font-size: 2.5rem !important;
+            }
+        }
+    }
+    .detail-rating {
+        padding-bottom: 1.5rem;;
+        .average-rating {
+            text-align: center;
+            line-height: unset !important;
+            width: 50%;
+            .point  {
+                font-size: 3rem;
+            }
+        }
+        .detail {
+            text-align: right;
+            width: 50%;
+            padding-right: 10px;
+            .item {
+                width: 100%;
+                display: inline-block;
+                line-height: 0.6rem;
+                .ionic3-star-rating {
+                    button {
+                        width: 10px !important;
+                        height: 10px !important;
+                        min-width: 0px !important;
+                        min-height: 0px !important;
+                        margin: 0px !important;
+                        padding: 0px 7px !important;
+                        .icon {
+                            font-size: 1.5rem !important;
+                        }
+                    }
+                }
+            }
+            .item>div:first-child {
+                float: right;
+                line-height: 1.3rem;
+                margin-left: 5px;
+            }
+            .item>div:nth-child(2) {
+                float: right;
+            }
+        }
+    }
+}

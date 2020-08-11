@@ -1,0 +1,18 @@
+<core-loading [hideUntil]="commentLoaded">
+    <ng-container *ngIf="isEnableComment; then blockComment"></ng-container>
+    <ng-template #blockComment>
+        <ion-list>
+            <ion-list-header lines="inset">
+              <ion-label>{{ 'core.atscomment.title' | translate }}</ion-label>
+            </ion-list-header>
+            <ion-item>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                <ion-label>
+                    <h2><b>Truong Cong Nghe</b></h2>
+                    <h3>Comment ndsfkdhsjh</h3>
+                    <ion-note>11/08/2020 9:52 AM</ion-note>
+                </ion-label>
+            </ion-item>
+          </ion-list>
+    </ng-template>
+</core-loading>
