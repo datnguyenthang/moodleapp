@@ -167,6 +167,8 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                                             + this.ratingData.typethree * 3
                                             + this.ratingData.typefour * 4
                                             + this.ratingData.typefive * 5) / this.ratingData.total;
+
+                    this.averageRating = Math.round(this.averageRating * 10)/10;
                     this.isReadonly = this.userVote > 0;
                 }
             }).catch((error)=> {

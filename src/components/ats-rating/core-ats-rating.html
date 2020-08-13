@@ -15,7 +15,7 @@
         </div>
         <div class="row detail-rating {{ classShowRatingDetail }}">
             <div class="average-rating">
-                <span class="point">{{ averageRating }}</span>
+                <span class="point">{{ averageRating | number:'1.1-1' }}</span>
                 <br>
                 <span>({{ totalRating }}) {{ 'core.atsrating.label.rating' }}</span>
             </div>
