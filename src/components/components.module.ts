@@ -54,6 +54,12 @@ import { CoreUserAvatarComponent } from './user-avatar/user-avatar';
 import { CoreStyleComponent } from './style/style';
 import { CoreBSTooltipComponent } from './bs-tooltip/bs-tooltip';
 
+// ATS
+import { StarRatingModule } from 'ionic3-star-rating';
+import { CoreATSRatingComponent } from './ats-rating/ats-rating';
+import { CoreATSCommentComponent } from './ats-comment/ats-comment';
+
+
 @NgModule({
     declarations: [
         CoreLoadingComponent,
@@ -91,7 +97,12 @@ import { CoreBSTooltipComponent } from './bs-tooltip/bs-tooltip';
         CoreInfiniteLoadingComponent,
         CoreUserAvatarComponent,
         CoreStyleComponent,
-        CoreBSTooltipComponent
+        CoreBSTooltipComponent,
+
+        // ATS
+        CoreATSRatingComponent,
+        CoreATSCommentComponent,
+        
     ],
     entryComponents: [
         CoreContextMenuPopoverComponent,
@@ -103,7 +114,8 @@ import { CoreBSTooltipComponent } from './bs-tooltip/bs-tooltip';
         IonicModule,
         TranslateModule.forChild(),
         CoreDirectivesModule,
-        CorePipesModule
+        CorePipesModule,
+        StarRatingModule,
     ],
     exports: [
         CoreLoadingComponent,
@@ -138,7 +150,11 @@ import { CoreBSTooltipComponent } from './bs-tooltip/bs-tooltip';
         CoreInfiniteLoadingComponent,
         CoreUserAvatarComponent,
         CoreStyleComponent,
-        CoreBSTooltipComponent
+        CoreBSTooltipComponent,
+
+        // ATS
+        CoreATSRatingComponent,
+        CoreATSCommentComponent,
     ]
 })
 export class CoreComponentsModule {}

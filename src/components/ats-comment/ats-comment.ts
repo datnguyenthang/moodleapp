@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, Optional } from '@angular/core';
-import { NavController, NavParams, Item, ToastController } from 'ionic-angular';
+import { Component, Input, OnInit, OnDestroy, Optional, ViewChild } from '@angular/core';
+import { NavController, ToastController, TextInput, ViewController, Content } from 'ionic-angular';
 import { CoreEventsProvider } from '@providers/events';
 import { CoreSitesProvider } from '@providers/sites';
 import { CoreCourseProvider } from '@core/course/providers/course';
 import { CoreCourseModulePrefetchDelegate } from '@core/course/providers/module-prefetch-delegate';
 import { TranslateService } from '@ngx-translate/core';
+
 
 /**
  * Component to display a module entry in a list of modules.
@@ -34,32 +35,38 @@ import { TranslateService } from '@ngx-translate/core';
 export class CoreATSCommentComponent implements OnInit, OnDestroy {
     @Input() module: any;
     @Input() courseId: number;
+    @ViewChild('txtComment') txtComment:TextInput;
+    @ViewChild(Content) content: Content;
+
 
     protected isDestroyed = false;
     protected commentLoaded = false;
     protected isEnableComment = false;
     protected commentData: any;
+    protected commentText = '';
+    protected contextid = 0;
+    protected commentspage: any;
+    protected comments: any;
+    protected listPost = [];
+    protected postReplied: any;
+    protected replyClass = '';
 
     constructor(@Optional() protected navCtrl: NavController, protected prefetchDelegate: CoreCourseModulePrefetchDelegate,
             protected eventsProvider: CoreEventsProvider, protected sitesProvider: CoreSitesProvider,
             protected courseProvider: CoreCourseProvider, protected toastController: ToastController,
             protected translate: TranslateService) {
-            this.commentData = { };
+            
+            this.postReplied = {
+                postid: 0
+            }
     }
 
     /**
      * Component being initialized.
      */
     ngOnInit(): void {
-        
-        console.log('===ngOnInit====');
-        console.log('courseId: ' + this.courseId);
-        console.log('moduleid: ' + this.module.id);
-        
         // Check enable comment
         this.checkEnableComment();
-
-        console.log('===ngOnInit====');
     }
 
     ngAfterViewInit():void {
@@ -74,57 +81,41 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
     }
     
     checkEnableComment(): Promise<void> {
-        console.log('===checkEnableComment====');
-
-        return this.getModuleSelect().then((modules) => {
-            if (modules && modules.length > 0) {
-                modules.forEach(item => {
-                    if (item == this.module.id) {
-                        this.isEnableComment = true;
-                        this.getCommentData().then(data => {
-                            this.commentLoaded = true;
-                            if (data && data.length > 0) {
-                                this.commentData = data[0];
-                                console.log('commentData:' + this.commentData);
-                            }
-                        }).catch((error)=> {
-                            console.log(error);
-                        });
-                        return this.isEnableComment;
+        return this.getCommentData().then(data => {
+            this.commentLoaded = true;
+            if (data) {
+                this.commentData = data;
+                this.contextid = this.commentData.contextid;
+                this.commentspage = JSON.parse(this.commentData.commentspage);
+                this.comments = this.commentspage.comments;
+                
+                for (var key in this.comments.posts) {
+                    var listReply = this.comments.posts[key].replies;
+                    var arrReply = [];
+                    for (var key2 in listReply) {
+                        var timecreated = new Date((listReply[key2].timecreated *1000));
+                        listReply[key2].timecreated = timecreated;
+                        arrReply.push(listReply[key2]);
                     }
-                });
-                console.log('isEnableComment: ' + this.isEnableComment);
-                this.commentLoaded = true;
-            } else {
-                console.log('isEnableComment: ' + this.isEnableComment);
-                this.commentLoaded = true;
+                    this.comments.posts[key].replies = arrReply;
+                    var timecreated = new Date((this.comments.posts[key].timecreated*1000));
+                    this.comments.posts[key].timecreated = timecreated;
+                    this.listPost.push(this.comments.posts[key]);
+                }
+                this.isEnableComment = true;
             }
+        }).catch((error)=> {
+            console.log(error);
+            this.commentLoaded = true;
         });
     }
 
-    getModuleSelect(siteId?: string): Promise<any[]> {
+    getCommentData(siteId?: string): Promise<any> {
         return this.sitesProvider.getSite(siteId).then((site) => {
             const data = {
-                courseid: this.courseId
-            };
-            
-            const preSets = {
-                getFromCache: false,
-                saveToCache: false,
-                emergencyCache: false,
-            };  
-            return site.read('block_course_rate_get_moduleselect', data, preSets);
-        });
-    }
-
-    getCommentData(siteId?: string): Promise<any[]> {
-        //console.log('===getCommentData====');
-
-        return this.sitesProvider.getSite(siteId).then((site) => {
-            const data = {
-                userid: this.sitesProvider.getCurrentSiteUserId(),
                 courseid: this.courseId,
-                cmid: this.module.id
+                cmid: this.module.id,
+                pagenumber: -1
             };
 
             const preSets = {
@@ -133,10 +124,102 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
                 emergencyCache: false,
             };
 
-            return site.read('block_course_rate_get_database', data, preSets).catch((error) => {
+            return site.read('block_socialcomments_ats_get_commentspage', data, preSets).catch((error) => {
                 console.log(error);
             });
         });
+    }
+
+    sendCommentClick() {
+        var commentvalue = document.getElementById('txtComment').querySelector('textarea').value;
+        if (commentvalue == '') {
+            return;
+        }
+
+        this.commentLoaded = false;
+        this.commentText = commentvalue;
+
+        if (this.postReplied.postid > 0) {
+            return this.postReplyComment().then(data => {
+                if(data) {
+                    this.listPost = [];
+                    this.commentText = '';
+                    this.postReplied.postid = 0;
+                    this.checkEnableComment();
+                    this.content.scrollToBottom();
+                }
+                this.commentLoaded = true;
+            }).catch((error)=> {
+                console.log(error);
+            });
+        } else {
+            return this.postComment().then(data => {
+                if(data) {
+                    this.listPost = [];
+                    this.commentText = '';
+                    this.checkEnableComment();
+                    this.content.scrollToBottom();
+                }
+                this.commentLoaded = true;
+            }).catch((error)=> {
+                console.log(error);
+            });
+        }
+        
+    }
+
+    postComment(siteId?: string): Promise<any> {
+        return this.sitesProvider.getSite(siteId).then((site) => {
+            const data = {
+                contextid: this.contextid,
+                content: this.commentText,
+                groupid: 0,
+                id: 0
+            };
+
+            const preSets = {
+                getFromCache: false,
+                saveToCache: false,
+                emergencyCache: false,
+            };
+
+            return site.read('block_socialcomments_save_comment', data, preSets).catch((error) => {
+                console.log(error);
+            });
+        });
+    }
+
+    postReplyComment(siteId?: string): Promise<any> {
+        return this.sitesProvider.getSite(siteId).then((site) => {
+            const data = {
+                contextid: this.contextid,
+                content: this.commentText,
+                commentid: this.postReplied.postid,
+                id: 0
+            };
+
+            const preSets = {
+                getFromCache: false,
+                saveToCache: false,
+                emergencyCache: false,
+            };
+
+            return site.read('block_socialcomments_save_reply', data, preSets).catch((error) => {
+                console.log(error);
+            });
+        });
+    }
+
+    replyClick(post?: any) {
+        this.postReplied = post;
+        this.replyClass = 'block-input-reply-comment';
+        this.txtComment.setFocus();
+    }
+
+    closeReplyClick() {
+        this.postReplied = { postid: 0 };
+        this.commentText = '';
+        this.replyClass = '';
     }
 
 }

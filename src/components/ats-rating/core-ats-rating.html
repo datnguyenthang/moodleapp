@@ -13,7 +13,7 @@
                                 (ratingChanged) = "ratingChange($event)" >
             </ionic3-star-rating>
         </div>
-        <div class="row detail-rating">
+        <div class="row detail-rating {{ classShowRatingDetail }}">
             <div class="average-rating">
                 <span class="point">{{ averageRating }}</span>
                 <br>
@@ -91,6 +91,8 @@
                 </div>
             </div>
         </div>
-       
+       <div class="row button-show-detail" (click)="showDetailClick()">
+            <ion-icon name="more"></ion-icon>
+       </div>
     </ng-template>
 </core-loading>

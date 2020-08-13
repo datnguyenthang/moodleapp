@@ -89,6 +89,7 @@ export class AddonLandingMyLandingPage implements OnDestroy {
     doRefresh(refresher?: any): void {
         this.landingProvider.initPopup();
         this.loadCustomHandler();
+        this.loadSlideData();
         refresher.complete();
     }
     /**

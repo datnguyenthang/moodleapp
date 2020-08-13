@@ -24,13 +24,15 @@ core-ats-rating {
         }
     }
     .detail-rating {
-        padding-bottom: 1.5rem;;
+        display: none;
+        padding-bottom: 1.5rem;
         .average-rating {
             text-align: center;
             line-height: unset !important;
             width: 50%;
             .point  {
                 font-size: 3rem;
+                color: #008446;
             }
         }
         .detail {
@@ -65,4 +67,15 @@ core-ats-rating {
             }
         }
     }
+    .show-detail {
+        display: flex;
+    }
+
+    .button-show-detail {
+        text-align: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #3f704d;
+    }
+    
 }

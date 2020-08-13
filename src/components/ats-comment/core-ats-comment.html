@@ -1,18 +1,60 @@
 <core-loading [hideUntil]="commentLoaded">
     <ng-container *ngIf="isEnableComment; then blockComment"></ng-container>
     <ng-template #blockComment>
-        <ion-list>
+        <ion-list class="block-comment">
             <ion-list-header lines="inset">
               <ion-label>{{ 'core.atscomment.title' | translate }}</ion-label>
             </ion-list-header>
-            <ion-item>
-                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+            <div class="item item-block item-ios input-comment {{ replyClass }}">
+                <div *ngIf="postReplied.postid > 0; then blockPostReplied"></div>
+                <ng-template #blockPostReplied>
+                    <ion-icon name="close" class="close-icon" (click)="closeReplyClick()"></ion-icon>
+                    <ion-label>
+                        <h2 class="title">
+                            <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                            <b>{{ postReplied.firstname }} {{ postReplied.lastname}}</b>
+                        </h2>
+                        <h3 class="content">{{ postReplied.content }}</h3>
+                        <ion-note>
+                            <p class="detail">{{ postReplied.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                        </ion-note>
+                    </ion-label>
+                </ng-template>
+                <div class="item item-block">
+                    <ion-textarea id="txtComment" #txtComment class="txt-comment" value="{{ commentText }}"
+                            rows="1" cols="2" auto-grow="true" placeholder="Wrire a comment..."></ion-textarea>
+                    <a class="button-send" (click)="sendCommentClick()"><ion-icon ios="ios-send" md="md-send"></ion-icon></a>
+                </div>
+            </div>
+            <ion-item *ngFor="let post of listPost">
                 <ion-label>
-                    <h2><b>Truong Cong Nghe</b></h2>
-                    <h3>Comment ndsfkdhsjh</h3>
-                    <ion-note>11/08/2020 9:52 AM</ion-note>
+                    <h2 class="title">
+                        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                        <b>{{ post.firstname }} {{ post.lastname}}</b>
+                    </h2>
+                    <h3 class="content">{{ post.content }}</h3>
+                    <ion-note>
+                        <p class="detail">{{ post.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                        <a class="link-action" (click)="replyClick(post)">
+                            {{ 'core.atscomment.label.reply' | translate }}
+                        </a>
+                    </ion-note>
+                    <div class="block-reply">
+                        <div *ngFor="let postReply of post.replies">
+                            <ion-label>
+                                <h3 class="title">
+                                    <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                                    <b>{{ postReply.firstname }} {{ postReply.lastname}}</b>
+                                </h3>
+                                <h3 class="content">{{ postReply.content }}</h3>
+                                <ion-note>
+                                    <p class="detail">{{ postReply.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                                </ion-note>
+                            </ion-label>
+                        </div>
+                    </div>
                 </ion-label>
             </ion-item>
-          </ion-list>
+        </ion-list>
     </ng-template>
 </core-loading>

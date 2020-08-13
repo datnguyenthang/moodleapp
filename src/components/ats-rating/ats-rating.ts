@@ -43,7 +43,7 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     protected totalRating = 0;
     protected averageRating = 0;
     protected isReadonly = false;
-
+    protected classShowRatingDetail = '';
 
     constructor(@Optional() protected navCtrl: NavController, protected prefetchDelegate: CoreCourseModulePrefetchDelegate,
             protected eventsProvider: CoreEventsProvider, protected sitesProvider: CoreSitesProvider,
@@ -61,15 +61,8 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
      * Component being initialized.
      */
     ngOnInit(): void {
-        /*
-        console.log('===ngOnInit====');
-        console.log(this.ratingData.typefive);
-        console.log('courseId: ' + this.courseId);
-        console.log('moduleid: ' + this.module.id);
-        */
         // Check enable rating
         this.checkEnableRating();
-        //console.log('===ngOnInit====');
     }
 
     ngAfterViewInit():void {
@@ -84,7 +77,6 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     }
     
     checkEnableRating(): Promise<void> {
-        //console.log('===checkEnableRating====');
         return this.getModuleSelect().then((modules) => {
             if (modules && modules.length > 0) {
                 modules.forEach(item => {
@@ -102,12 +94,6 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                                                         + this.ratingData.typefour * 4
                                                         + this.ratingData.typefive * 5) / this.ratingData.total;
                                 this.isReadonly = this.userVote > 0;
-                                /*
-                                console.log('ratingData:' + this.ratingData);
-                                console.log('userVote:' + this.userVote);
-                                console.log('totalRating:' + this.totalRating);
-                                console.log('averageRating:' + this.averageRating);
-                                */
                             }
                             
                         }).catch((error)=> {
@@ -116,10 +102,8 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                         return this.isEnableRating;
                     }
                 });
-                //console.log('isEnableRating: ' + this.isEnableRating);
                 this.ratingLoaded = true;
             } else {
-                console.log('isEnableRating: ' + this.isEnableRating);
                 this.ratingLoaded = true;
             }
         });
@@ -136,13 +120,13 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                 saveToCache: false,
                 emergencyCache: false,
             };  
-            return site.read('block_course_rate_get_moduleselect', data, preSets);
+            return site.read('block_course_rate_get_moduleselect', data, preSets).catch((error) => {
+                console.log(error);
+            });
         });
     }
 
     getRatingData(siteId?: string): Promise<any[]> {
-        //console.log('===getRatingData====');
-
         return this.sitesProvider.getSite(siteId).then((site) => {
             const data = {
                 userid: this.sitesProvider.getCurrentSiteUserId(),
@@ -184,11 +168,6 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                                             + this.ratingData.typefour * 4
                                             + this.ratingData.typefive * 5) / this.ratingData.total;
                     this.isReadonly = this.userVote > 0;
-                    /*
-                    console.log('userVote:' + this.userVote);
-                    console.log('totalRating:' + this.totalRating);
-                    console.log('averageRating:' + this.averageRating);
-                    */
                 }
             }).catch((error)=> {
                 console.log(error);
@@ -197,11 +176,6 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     }
 
     submitRating(siteId?: string, rating ?: number): Promise<string> {
-        /*
-        console.log('===submitRating====');
-        console.log('vote: ' + this.userVote);
-        */
-       
         return this.sitesProvider.getSite(siteId).then((site) => {
 
             var func = 'insert';
@@ -224,9 +198,17 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                 emergencyCache: false,
             };
 
-            return site.write('block_course_rate_update_db', data, preSets).catch((error)=>{
-                //console.log(error);
+            return site.write('block_course_rate_update_db', data, preSets).catch((error) => {
+                console.log(error);
             });
         });
+    }
+
+    showDetailClick() {
+        if(this.classShowRatingDetail != '') {
+            this.classShowRatingDetail = '';
+        } else {
+            this.classShowRatingDetail = 'show-detail';
+        }
     }
 }
