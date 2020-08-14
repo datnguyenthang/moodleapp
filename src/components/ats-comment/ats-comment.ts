@@ -68,10 +68,6 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
         // Check enable comment
         this.checkEnableComment();
     }
-
-    ngAfterViewInit():void {
-
-    }
     
     /**
      * Component destroyed.
@@ -86,23 +82,25 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
             if (data) {
                 this.commentData = data;
                 this.contextid = this.commentData.contextid;
-                this.commentspage = JSON.parse(this.commentData.commentspage);
-                this.comments = this.commentspage.comments;
-                
-                for (var key in this.comments.posts) {
-                    var listReply = this.comments.posts[key].replies;
-                    var arrReply = [];
-                    for (var key2 in listReply) {
-                        var timecreated = new Date((listReply[key2].timecreated *1000));
-                        listReply[key2].timecreated = timecreated;
-                        arrReply.push(listReply[key2]);
+                if (this.contextid > 0) {
+                    this.isEnableComment = true;
+                    this.commentspage = JSON.parse(this.commentData.commentspage);
+                    this.comments = this.commentspage.comments;
+                    
+                    for (var key in this.comments.posts) {
+                        var listReply = this.comments.posts[key].replies;
+                        var arrReply = [];
+                        for (var key2 in listReply) {
+                            var timecreated = new Date((listReply[key2].timecreated *1000));
+                            listReply[key2].timecreated = timecreated;
+                            arrReply.push(listReply[key2]);
+                        }
+                        this.comments.posts[key].replies = arrReply;
+                        var timecreated = new Date((this.comments.posts[key].timecreated*1000));
+                        this.comments.posts[key].timecreated = timecreated;
+                        this.listPost.push(this.comments.posts[key]);
                     }
-                    this.comments.posts[key].replies = arrReply;
-                    var timecreated = new Date((this.comments.posts[key].timecreated*1000));
-                    this.comments.posts[key].timecreated = timecreated;
-                    this.listPost.push(this.comments.posts[key]);
                 }
-                this.isEnableComment = true;
             }
         }).catch((error)=> {
             console.log(error);
@@ -145,23 +143,23 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
                     this.listPost = [];
                     this.commentText = '';
                     this.postReplied.postid = 0;
+                    this.replyClass = '';
                     this.checkEnableComment();
-                    this.content.scrollToBottom();
                 }
                 this.commentLoaded = true;
-            }).catch((error)=> {
+            }).catch((error) => {
                 console.log(error);
             });
         } else {
             return this.postComment().then(data => {
-                if(data) {
+                if (data) {
                     this.listPost = [];
                     this.commentText = '';
                     this.checkEnableComment();
                     this.content.scrollToBottom();
                 }
                 this.commentLoaded = true;
-            }).catch((error)=> {
+            }).catch((error) => {
                 console.log(error);
             });
         }
