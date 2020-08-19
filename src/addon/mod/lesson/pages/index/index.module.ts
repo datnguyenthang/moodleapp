@@ -27,7 +27,8 @@ import { AddonModLessonIndexPage } from './index';
         CoreDirectivesModule,
         AddonModLessonComponentsModule,
         IonicPageModule.forChild(AddonModLessonIndexPage),
-        TranslateModule.forChild()
+        TranslateModule.forChild(),
+        
     ],
 })
 export class AddonModLessonIndexPageModule {}

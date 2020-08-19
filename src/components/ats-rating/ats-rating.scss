@@ -24,7 +24,10 @@ core-ats-rating {
         }
     }
     .detail-rating {
-        display: none;
+        height: 0px;
+        transition: 0.5s;
+        width: 100%;
+        overflow: hidden;
         .average-rating {
             text-align: center;
             line-height: unset !important;
@@ -67,14 +70,19 @@ core-ats-rating {
         }
     }
     .show-detail {
-        display: flex;
+        height: 110px;
     }
 
     .button-show-detail {
         text-align: center;
         justify-content: center;
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: #3f704d;
+        ion-icon {
+            width: 100% !important;
+            border-top: 1px solid;
+            border-image: linear-gradient(to right, #00000000, #c8c7cc, #00000000 ) 100% 1;
+        }
     }
     
 }

@@ -91,13 +91,9 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
                         var listReply = this.comments.posts[key].replies;
                         var arrReply = [];
                         for (var key2 in listReply) {
-                            var timecreated = new Date((listReply[key2].timecreated *1000));
-                            listReply[key2].timecreated = timecreated;
                             arrReply.push(listReply[key2]);
                         }
                         this.comments.posts[key].replies = arrReply;
-                        var timecreated = new Date((this.comments.posts[key].timecreated*1000));
-                        this.comments.posts[key].timecreated = timecreated;
                         this.listPost.push(this.comments.posts[key]);
                     }
                 }

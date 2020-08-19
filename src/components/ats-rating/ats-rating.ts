@@ -44,6 +44,7 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     protected averageRating = 0;
     protected isReadonly = false;
     protected classShowRatingDetail = '';
+    protected iconShowdetail = 'arrow-down';
 
     constructor(@Optional() protected navCtrl: NavController, protected prefetchDelegate: CoreCourseModulePrefetchDelegate,
             protected eventsProvider: CoreEventsProvider, protected sitesProvider: CoreSitesProvider,
@@ -207,10 +208,12 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     }
 
     showDetailClick() {
-        if(this.classShowRatingDetail != '') {
+        if (this.classShowRatingDetail != '') {
             this.classShowRatingDetail = '';
+            this.iconShowdetail = 'arrow-down';
         } else {
             this.classShowRatingDetail = 'show-detail';
+            this.iconShowdetail = 'arrow-up';
         }
     }
 }

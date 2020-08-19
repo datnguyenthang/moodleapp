@@ -1,9 +1,9 @@
-<ion-header>
+<ion-header class="ats-header">
     <ion-navbar core-back-button>
         <ion-title>{{ 'core.login.reconnect' | translate }}</ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="ats-login">
     <div *ngIf="site" text-wrap text-center margin-bottom [ngClass]="{'item-avatar-center': showSiteAvatar}">
         <ng-container *ngIf="showSiteAvatar">
             <ion-avatar>
@@ -21,6 +21,8 @@
         <h3 *ngIf="siteName" padding class="core-sitename"><core-format-text [text]="siteName" [filter]="false"></core-format-text></h3>
         <p class="core-siteurl">{{siteUrl}}</p>
 
+        <h3 class="ats-title">FE ATS</h3>
+
         <p *ngIf="!isLoggedOut" class="core-login-reconnect-warning">
             <ion-icon padding name="alert"></ion-icon> {{ 'core.login.reconnectdescription' | translate }}
         </p>
@@ -37,10 +39,12 @@
         <ion-grid padding>
             <ion-row>
                 <ion-col>
-                    <a ion-button block color="light" (click)="cancel($event)">{{ 'core.login.cancel' | translate }}</a>
+                    <button ion-button block [disabled]="!credForm.valid" class="core-login-login-button">{{ 'core.login.loginbutton' | translate }}</button>
                 </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-col>
-                    <button ion-button block [disabled]="!credForm.valid">{{ 'core.login.loginbutton' | translate }}</button>
+                    <a ion-button block color="light" (click)="cancel($event)" class="core-login-cancel-button">{{ 'core.login.cancel' | translate }}</a>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -68,4 +72,5 @@
             <a ion-button block color="light" (click)="cancel($event)">{{ 'core.login.cancel' | translate }}</a>
         </ion-item>
     </ion-list>
+    <div class="ats-wave"></div>
 </ion-content>

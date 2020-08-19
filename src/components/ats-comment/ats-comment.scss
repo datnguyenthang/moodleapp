@@ -20,6 +20,9 @@ core-ats-comment {
         z-index: 999;
         bottom: 48px;
         display: block;
+        transition: 0.5s;
+        transition-property: height;
+        height: 66px;
 
         .txt-comment {
             float: left;
@@ -62,6 +65,12 @@ core-ats-comment {
 
     .block-comment {
         margin-bottom: 7rem !important;
+        ion-item {
+            border-bottom: 0.55px solid #c8c7cc;
+            .item-inner {
+                border: 0px !important;
+            }
+        }
         .title {
             ion-icon {
                 font-size: 2rem;
@@ -84,7 +93,7 @@ core-ats-comment {
                 font-size: 1.3rem;
             }
         }
-
+        
         .block-reply {
             width: 100%;
             padding-left: 2rem;
@@ -97,6 +106,15 @@ core-ats-comment {
     .block-input-reply-comment {
         box-shadow: 0 0px 20px #008446;
         border-top: 1px solid #0084459e !important;
+        height: calc(100vh - 120px);
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+
+        .item-block {
+            bottom: 60px;
+            position: fixed;
+            width: calc(100vw - 20px);
+        }
     }
     
 }

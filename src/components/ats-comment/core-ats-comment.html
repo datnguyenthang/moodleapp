@@ -16,8 +16,22 @@
                         </h2>
                         <h3 class="content">{{ postReplied.content }}</h3>
                         <ion-note>
-                            <p class="detail">{{ postReplied.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                            <p class="detail">{{ postReplied.timecreated }}</p>
                         </ion-note>
+                        <div class="block-reply">
+                            <div *ngFor="let postReply of postReplied.replies">
+                                <ion-label>
+                                    <h3 class="title">
+                                        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+                                        <b>{{ postReply.firstname }} {{ postReply.lastname}}</b>
+                                    </h3>
+                                    <h3 class="content">{{ postReply.content }}</h3>
+                                    <ion-note>
+                                        <p class="detail">{{ postReply.timecreated }}</p>
+                                    </ion-note>
+                                </ion-label>
+                            </div>
+                        </div>
                     </ion-label>
                 </ng-template>
                 <div class="item item-block">
@@ -34,7 +48,7 @@
                     </h2>
                     <h3 class="content">{{ post.content }}</h3>
                     <ion-note>
-                        <p class="detail">{{ post.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                        <p class="detail">{{ post.timecreated }}</p>
                         <a class="link-action" (click)="replyClick(post)">
                             {{ 'core.atscomment.label.reply' | translate }}
                         </a>
@@ -48,7 +62,7 @@
                                 </h3>
                                 <h3 class="content">{{ postReply.content }}</h3>
                                 <ion-note>
-                                    <p class="detail">{{ postReply.timecreated | date: 'dd/MM/yyyy H:mm' }}</p>
+                                    <p class="detail">{{ postReply.timecreated }}</p>
                                 </ion-note>
                             </ion-label>
                         </div>
