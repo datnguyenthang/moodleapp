@@ -29,9 +29,15 @@
     </div>
     <form ion-list *ngIf="!isOAuth" [formGroup]="credForm" (ngSubmit)="login($event)" class="core-login-form" #reconnectForm>
         <ion-item text-wrap class="core-username">
-            <p>{{username}}</p>
+            <ion-label>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+            </ion-label>
+            <ion-input type="text" readonly="true" value="{{ username }}"></ion-input>
         </ion-item>
         <ion-item margin-bottom>
+            <ion-label>
+                <ion-icon ios="ios-lock" md="md-lock"></ion-icon>
+            </ion-label>
             <core-show-password item-content [name]="'password'">
                 <ion-input class="core-ioninput-password" name="password" type="password" placeholder="{{ 'core.login.password' | translate }}" formControlName="password" [clearOnEdit]="false"></ion-input>
             </core-show-password>

@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CoreDirectivesModule } from '@directives/directives.module';
 import { AddonModLessonComponentsModule } from '../../components/components.module';
 import { AddonModLessonIndexPage } from './index';
+import { CoreComponentsModule } from '@components/components.module';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { AddonModLessonIndexPage } from './index';
         AddonModLessonComponentsModule,
         IonicPageModule.forChild(AddonModLessonIndexPage),
         TranslateModule.forChild(),
+        CoreComponentsModule
         
     ],
 })

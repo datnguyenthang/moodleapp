@@ -132,10 +132,8 @@ ion-app.app-root page-core-login-site {
         background-color: $white !important;
         border-color: $white !important;
     }
-    .bar-buttons {
-        .bar-button-default {
-            color: $core-color;
-        }
+    .bar-button-default {
+        color: $core-color;
     }
 }
 .ats-header::after {
@@ -159,7 +157,7 @@ ion-app.app-root page-core-login-site {
             background-color: #ffffff !important;
             border-radius: 50px;
             box-shadow: 0 0 5px #9dcdb5;
-            padding: 5px 20px;
+            padding: 5px 10px;
             width: 80vw;
             max-width: 50rem;
             margin-left: auto;
@@ -168,13 +166,17 @@ ion-app.app-root page-core-login-site {
             min-height: 3.5rem;
             .item-inner {
                 border: 0;
-                .text-input.text-input-ios {
+                box-shadow: unset !important;
+                .text-input.text-input {
                     margin: 5px;
                     height: 100%;
+                    width: 100%;
+                    padding-right: 35px;
                 }
                 ion-label {
                     font-size: 2rem;
-                    margin: 0 10px 0 2px !important;
+                    margin: 0 5px 0 2px !important;
+                    padding: 2px !important;
                 }
             }
             core-show-password {
