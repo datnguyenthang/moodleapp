@@ -109,11 +109,18 @@ core-ats-comment {
         height: calc(100vh - 120px);
         border-top-left-radius: 8px !important;
         border-top-right-radius: 8px !important;
-
+        
+        .block-reply {
+            overflow: scroll;
+            height: 70vh;
+            padding-bottom: 5.5rem;
+        }
         .item-block {
-            bottom: 60px;
+            bottom: 48px;
             position: fixed;
             width: calc(100vw - 20px);
+            background-color: $white;
+            padding: 10px 0px;
         }
     }
     
