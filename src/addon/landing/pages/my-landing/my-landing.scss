@@ -81,14 +81,14 @@ page-addon-landing-my-landing {
         
         .block_slider {
             width: 100vw;
-            padding: 10px;
+            padding: 0;
             background-color: #dedede5e;
             ion-slides {
                 .slide-zoom {
-                    padding: 0px 5px;
+                    padding: 0px 2px;
                     img {
-                        border-radius: 10px;
-                        margin-top: 12px;
+                        border-radius: 5px;
+                        margin-top: 15px;
                     }
                 }
                 .swiper-pagination-bullets {
@@ -99,6 +99,9 @@ page-addon-landing-my-landing {
             }
             ion-label {
                 margin: 0px;
+                position: relative;
+                top: 10px;
+                left: 5px;
             }
         }
         
