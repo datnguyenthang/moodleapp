@@ -72,7 +72,8 @@
                         <ion-col col-3 col-sm *ngFor="let handler of handlers" (click)="openHandler(handler)" title="{{ handler.title | translate }}">
                             <div class="tool-element">
                                 <div class="tool-img">
-                                    <core-icon [name]="handler.icon"></core-icon>
+                                    <core-icon *ngIf="!handler.icon.includes('http')" [name]="handler.icon"></core-icon>
+                                    <img *ngIf="handler.icon.includes('http')" [src]="handler.icon" />
                                 </div>
                                 <p>{{ handler.title | translate}}</p>
                             </div>
