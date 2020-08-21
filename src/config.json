@@ -88,9 +88,9 @@
     "notificoncolor": "#008446",
     "statusbarbg": false,
     "statusbarlighttext": false,
-    "statusbarbgios": "#008446",
+    "statusbarbgios": "#000000",
     "statusbarlighttextios": true,
-    "statusbarbgandroid": "#008446",
+    "statusbarbgandroid": "#000000",
     "statusbarlighttextandroid": true,
     "statusbarbgremotetheme": "#000000",
     "statusbarlighttextremotetheme": true,
@@ -102,7 +102,7 @@
         "android": "vn.com.fecredit.training",
         "ios": "1322318729",
         "windows": "moodle-desktop\/9p9bwvhdc8c8",
-        "mac": "id1255924440",
+        "mac": "1255924440",
         "linux": "https:\/\/download.moodle.org\/desktop\/download.php?platform=linux&arch=64"
     }
 }
