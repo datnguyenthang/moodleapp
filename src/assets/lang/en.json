@@ -2204,5 +2204,13 @@
     "core.years": "years",
     "core.yes": "Yes",
     "core.youreoffline": "You are offline",
-    "core.youreonline": "You are back online"
+    "core.youreonline": "You are back online",
+
+    // ATS
+    "core.atscomment.title": "Comment",
+    "core.atscomment.label.reply": "Reply",
+    "core.atscomment.text.writecomment": "Write a comment...",
+    "core.atsrating.title": "Rating",
+    "core.atsrating.label.rating": "rating total",
+    "core.atsrating.submitsuccess": "Rating success"
 }
