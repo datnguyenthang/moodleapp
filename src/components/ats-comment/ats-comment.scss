@@ -65,6 +65,20 @@ core-ats-comment {
 
     .block-comment {
         margin-bottom: 7rem !important;
+        ion-list-header {
+            border-bottom: 0.55px solid #c8c7cc;
+            font-size: 1.2rem !important;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            color: $black;
+            background: transparent;
+            margin: 0 !important;
+            min-height: 4rem !important;
+            padding-left: 5px !important;
+        }
+        
+
         ion-item {
             border-bottom: 0.55px solid #c8c7cc;
             .item-inner {
@@ -125,6 +139,7 @@ core-ats-comment {
     }
 
     .txt-comment-focus {
+        bottom: 0px;
         .item-block {
             bottom: 0px;
         }
