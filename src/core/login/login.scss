@@ -176,7 +176,8 @@ ion-app.app-root page-core-login-site {
                 ion-label {
                     font-size: 2rem;
                     margin: 0 5px 0 2px !important;
-                    padding: 2px 5px !important;
+                    min-width: 3rem;
+                    text-align: center;
                 }
             }
             core-show-password {
