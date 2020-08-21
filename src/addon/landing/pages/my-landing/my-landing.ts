@@ -50,7 +50,7 @@ export class AddonLandingMyLandingPage implements OnDestroy {
     constructor(private menuDelegate: CoreMainMenuDelegate, private sitesProvider: CoreSitesProvider, private landingProvider: AddonLandingProvider,
                 private navCtrl: NavController, private domUtils: CoreDomUtilsProvider) {
         this.loadSiteName();
-        this.landingProvider.initPopup();
+        // this.landingProvider.initPopup();
         this.landingProvider.getSlideData().then(result => {
             this.sliders = result;
             this.slideDatas = this.sliders.data;
@@ -87,7 +87,7 @@ export class AddonLandingMyLandingPage implements OnDestroy {
      * @return {Promise<any>} Promise resolved when done.
      */
     doRefresh(refresher?: any): void {
-        this.landingProvider.initPopup();
+        // this.landingProvider.initPopup();
         this.loadCustomHandler();
         this.loadSlideData();
         refresher.complete();
