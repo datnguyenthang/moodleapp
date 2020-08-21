@@ -82,6 +82,9 @@ function treatMergedData(data) {
             case 'lang':
                 prefix = 'core';
                 break;
+            case 'ats-lang':
+                addProperties(merged, data[filepath], '');
+                break;
             case 'core':
                 if (pathSplit[1] == 'lang') {
                     // Not used right now.
@@ -200,6 +203,7 @@ var paths = {
         assets: './src/assets',
         lang: [
             './src/lang/',
+            './src/ats-lang/',
             './src/core/**/lang/',
             './src/addon/**/lang/',
             './src/components/**/lang/',
