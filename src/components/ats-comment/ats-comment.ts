@@ -215,14 +215,10 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
         this.postReplied = { postid: 0 };
         this.commentText = '';
         this.replyClass = '';
+        this.txtCommentClass = '';
     }
 
     txtCommentFocus() {
         this.txtCommentClass = 'txt-comment-focus';
     }
-
-    txtCommentBlur() {
-        this.txtCommentClass = '';
-    }
-
 }
