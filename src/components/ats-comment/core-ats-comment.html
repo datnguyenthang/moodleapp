@@ -5,7 +5,7 @@
             <ion-list-header lines="inset">
               <ion-label>{{ 'core.atscomment.title' | translate }}</ion-label>
             </ion-list-header>
-            <div class="item item-block item-ios input-comment {{ replyClass }}">
+            <div class="item item-block item-ios input-comment {{ replyClass }}  {{txtCommentClass}}">
                 <div *ngIf="postReplied.postid > 0; then blockPostReplied"></div>
                 <ng-template #blockPostReplied>
                     <ion-icon name="close" class="close-icon" (click)="closeReplyClick()"></ion-icon>
@@ -36,7 +36,8 @@
                 </ng-template>
                 <div class="item item-block">
                     <ion-textarea id="txtComment" #txtComment class="txt-comment" value="{{ commentText }}"
-                            rows="1" cols="2" auto-grow="true" placeholder="{{ 'core.atscomment.text.writecomment' | translate }}"></ion-textarea>
+                            rows="1" cols="2" auto-grow="true" placeholder="{{ 'core.atscomment.text.writecomment' | translate }}"
+                            (ionFocus)="txtCommentFocus()" (ionBlur)="txtCommentBlur()"></ion-textarea>
                     <a class="button-send" (click)="sendCommentClick()"><ion-icon ios="ios-send" md="md-send"></ion-icon></a>
                 </div>
             </div>

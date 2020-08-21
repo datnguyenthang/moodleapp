@@ -50,6 +50,7 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
     protected listPost = [];
     protected postReplied: any;
     protected replyClass = '';
+    protected txtCommentClass = '';
 
     constructor(@Optional() protected navCtrl: NavController, protected prefetchDelegate: CoreCourseModulePrefetchDelegate,
             protected eventsProvider: CoreEventsProvider, protected sitesProvider: CoreSitesProvider,
@@ -214,6 +215,14 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
         this.postReplied = { postid: 0 };
         this.commentText = '';
         this.replyClass = '';
+    }
+
+    txtCommentFocus() {
+        this.txtCommentClass = 'txt-comment-focus';
+    }
+
+    txtCommentBlur() {
+        this.txtCommentClass = '';
     }
 
 }
