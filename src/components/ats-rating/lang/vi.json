@@ -1,6 +1,5 @@
 {
-    "core.atsrating.title": "Đánh giá",
-    "core.atsrating.label.rating": "lượt đánh giá",
-    "core.atsrating.submitsuccess": "Đánh giá thành công"
-    
+    "title": "Đánh giá của bạn",
+    "label.rating": "lượt đánh giá",
+    "label.submitsuccess": "Đánh giá thành công"
 }

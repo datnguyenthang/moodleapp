@@ -1,6 +1,6 @@
 {
-    "core.atsrating.title": "Your rating",
-    "core.atsrating.label.rating": "rating total",
-    "core.atsrating.submitsuccess": "Rating success"
+    "title": "Your rating",
+    "label.rating": "rating total",
+    "label.submitsuccess": "Rating success"
     
 }

@@ -3,7 +3,7 @@
     <ng-template #blockComment>
         <ion-list class="block-comment">
             <ion-list-header lines="inset">
-              <ion-label>{{ 'core.atscomment.title' | translate }}</ion-label>
+              <ion-label>{{ 'components.ats-comment.title' | translate }}</ion-label>
             </ion-list-header>
             <div class="item item-block item-ios input-comment {{ replyClass }}  {{txtCommentClass}}">
                 <div *ngIf="postReplied.postid > 0; then blockPostReplied"></div>
@@ -36,7 +36,7 @@
                 </ng-template>
                 <div class="item item-block">
                     <ion-textarea id="txtComment" #txtComment class="txt-comment" value="{{ commentText }}"
-                            rows="1" cols="2" auto-grow="true" placeholder="{{ 'core.atscomment.text.writecomment' | translate }}"
+                            rows="1" cols="2" auto-grow="true" placeholder="{{ 'components.ats-comment.text.writecomment' | translate }}"
                             (ionFocus)="txtCommentFocus()" (ionBlur)="txtCommentBlur()"></ion-textarea>
                     <a class="button-send" (click)="sendCommentClick()"><ion-icon ios="ios-send" md="md-send"></ion-icon></a>
                 </div>
@@ -51,7 +51,7 @@
                     <ion-note>
                         <p class="detail">{{ post.timecreated }}</p>
                         <a class="link-action" (click)="replyClick(post)">
-                            {{ 'core.atscomment.label.reply' | translate }}
+                            {{ 'components.ats-comment.label.reply' | translate }}
                         </a>
                     </ion-note>
                     <div class="block-reply">

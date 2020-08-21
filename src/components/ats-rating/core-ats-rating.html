@@ -2,7 +2,7 @@
     <ng-container *ngIf="isEnableRating; then blockRating"></ng-container>
     <ng-template #blockRating>
         <div class="row">
-            <ion-label>{{ 'core.atsrating.title' | translate }}</ion-label>
+            <ion-label>{{ 'components.ats-rating.title' | translate }}</ion-label>
             <ionic3-star-rating activeIcon = "md-star"
                                 defaultIcon = "md-star-outline"
                                 activeColor = "#a6e72d"
@@ -17,7 +17,7 @@
             <div class="average-rating">
                 <span class="point">{{ averageRating | number:'1.1-1' }}</span>
                 <br>
-                <span>({{ totalRating }}) {{ 'core.atsrating.label.rating' | translate }}</span>
+                <span>({{ totalRating }}) {{ 'components.ats-rating.label.rating' | translate }}</span>
             </div>
             <div class="detail">
                 <div class="item">

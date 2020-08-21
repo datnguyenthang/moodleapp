@@ -153,7 +153,7 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
         this.submitRating().then((data) => {
             this.ratingLoaded = true;
             const toast = this.toastController.create({
-                message: this.translate.instant('core.atsrating.submitsuccess'),
+                message: this.translate.instant('components.ats-rating.label.submitsuccess'),
                 duration: 5000
             });
             toast.present();

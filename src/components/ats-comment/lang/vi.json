@@ -1,6 +1,5 @@
 {
-    "core.atscomment.title": "Bình luận",
-    "core.atscomment.label.reply": "Trả lời",
-    "core.atscomment.text.writecomment": "Viết bình luận..."
-    
+    "title": "Bình luận",
+    "label.reply": "Trả lời",
+    "text.writecomment": "Viết bình luận..."
 }

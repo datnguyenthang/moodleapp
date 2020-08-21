@@ -259,6 +259,8 @@
     "addon.landing.mandatorycourse": "Mandatory Course",
     "addon.landing.schoolofrecovery": "School Of Recovery",
     "addon.landing.schoolofsale": "School Of Sales & Service",
+    "addon.landing.titleslider": "Maybe interested?",
+    "addon.landing.titletools": "Training tools",
     "addon.mandatory.mandatory": "Mandatory Training",
     "addon.messageoutput_airnotifier.processorsettingsdesc": "Configure devices",
     "addon.messages.acceptandaddcontact": "Accept and add to contacts",
@@ -1383,6 +1385,12 @@
     "assets.mimetypes.text/rtf": "RTF document",
     "assets.mimetypes.text/vtt": "Web Video Text Track",
     "assets.mimetypes.video": "Video file ({{$a.EXT}})",
+    "components.ats-comment.label.reply": "Reply",
+    "components.ats-comment.text.writecomment": "Write a comment...",
+    "components.ats-comment.title": "Comment",
+    "components.ats-rating.label.rating": "rating total",
+    "components.ats-rating.label.submitsuccess": "Rating success",
+    "components.ats-rating.title": "Your rating",
     "core.accounts": "Accounts",
     "core.add": "Add",
     "core.agelocationverification": "Age and location verification",
@@ -2204,13 +2212,5 @@
     "core.years": "years",
     "core.yes": "Yes",
     "core.youreoffline": "You are offline",
-    "core.youreonline": "You are back online",
-    
-    // ATS
-    "core.atscomment.title": "Comment",
-    "core.atscomment.label.reply": "Reply",
-    "core.atscomment.text.writecomment": "Write a comment...",
-    "core.atsrating.title": "Rating",
-    "core.atsrating.label.rating": "rating total",
-    "core.atsrating.submitsuccess": "Rating success"
+    "core.youreonline": "You are back online"
 }

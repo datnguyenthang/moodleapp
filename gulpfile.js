@@ -100,6 +100,16 @@ function treatMergedData(data) {
                 // E.g. 'mod_assign_feedback_comments'.
                 prefix = 'addon.' + pathSplit.join('_');
                 break;
+            case 'components':
+                    // Remove final item 'lang'.
+                    pathSplit.pop();
+                    // Remove first item 'addon'.
+                    pathSplit.shift();
+    
+                    // For subplugins. We'll use plugin_subfolder_subfolder2_...
+                    // E.g. 'mod_assign_feedback_comments'.
+                    prefix = 'components.' + pathSplit.join('_');
+                    break;
             case 'assets':
                 prefix = 'assets.' + pathSplit[1];
                 break;
@@ -192,6 +202,7 @@ var paths = {
             './src/lang/',
             './src/core/**/lang/',
             './src/addon/**/lang/',
+            './src/components/**/lang/',
             './src/assets/countries/',
             './src/assets/mimetypes/'
         ],
@@ -201,6 +212,7 @@ var paths = {
 // Build the language files into a single file per language.
 gulp.task('lang', function(done) {
     buildLang('en', paths.lang, path.join(paths.assets, 'lang'), done);
+    buildLang('vi', paths.lang, path.join(paths.assets, 'lang'), done);
 });
 
 // Convert config.json into a TypeScript class.

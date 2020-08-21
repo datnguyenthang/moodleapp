@@ -1,6 +1,5 @@
 {
-    "core.atscomment.title": "Comment",
-    "core.atscomment.label.reply": "Reply",
-    "core.atscomment.text.writecomment": "Write a comment..."
-    
+    "title": "Comment",
+    "label.reply": "Reply",
+    "text.writecomment": "Write a comment..."
 }
