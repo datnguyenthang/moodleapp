@@ -1135,14 +1135,5 @@
     "core.years": "năm",
     "core.yes": "Có",
     "core.youreoffline": "Bạn đang offline",
-    "core.youreonline": "Bạn đang trở lại trực tuyến",
-
-    // ATS
-    "core.atscomment.title": "Bình luận",
-    "core.atscomment.label.reply": "Trả lời",
-    "core.atscomment.text.writecomment": "Viết bình luận...",
-    "core.atsrating.title": "Đánh giá",
-    "core.atsrating.label.rating": "lượt đánh giá",
-    "core.atsrating.submitsuccess": "Đánh giá thành công"
-    
+    "core.youreonline": "Bạn đang trở lại trực tuyến"
 }
