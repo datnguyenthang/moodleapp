@@ -102,6 +102,9 @@ page-addon-landing-my-landing {
                 position: relative;
                 top: 10px;
                 left: 5px;
+                font-size: larger;
+                font-weight: 500;
+                padding-left: 5px;
             }
         }
         
@@ -110,6 +113,8 @@ page-addon-landing-my-landing {
             margin: 10px;
             ion-label {
                 margin: 0px;
+                font-size: larger;
+                font-weight: 500;
             }
             .tools {
                 .tool-element {
