@@ -9,7 +9,7 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="ats-content">
     <ion-refresher [enabled]="landingLoaded" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content pullingText="{{ 'core.pulltorefresh' | translate }}"></ion-refresher-content>
     </ion-refresher>
