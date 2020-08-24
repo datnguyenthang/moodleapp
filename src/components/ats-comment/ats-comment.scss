@@ -120,9 +120,10 @@ core-ats-comment {
     .block-input-reply-comment {
         box-shadow: 0 0px 20px #008446;
         border-top: 1px solid #0084459e !important;
-        height: calc(100vh - 120px);
+        height: 90vh;
         border-top-left-radius: 8px !important;
         border-top-right-radius: 8px !important;
+        bottom: 0px;
         
         .block-reply {
             overflow: scroll;
@@ -132,13 +133,15 @@ core-ats-comment {
         .item-block {
             bottom: 55px;
             position: fixed;
-            width: calc(100vw - 20px);
+            width: 100vw;
             background-color: $white;
-            padding: 10px 0px;
+            padding: 10px 10px;
+            left: 0px;
         }
     }
 
     .txt-comment-focus {
+        bottom: 0px;
         .item-block {
             bottom: 0px;
         }

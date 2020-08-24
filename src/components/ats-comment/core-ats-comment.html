@@ -37,7 +37,7 @@
                 <div class="item item-block">
                     <ion-textarea id="txtComment" #txtComment class="txt-comment" value="{{ commentText }}"
                             rows="1" cols="2" auto-grow="true" placeholder="{{ 'components.ats-comment.text.writecomment' | translate }}"
-                            (ionFocus)="txtCommentFocus()"></ion-textarea>
+                            (ionFocus)="txtCommentFocus()" (ionBlur)="txtCommentBlur()"></ion-textarea>
                     <a class="button-send" (click)="sendCommentClick()"><ion-icon ios="ios-send" md="md-send"></ion-icon></a>
                 </div>
             </div>

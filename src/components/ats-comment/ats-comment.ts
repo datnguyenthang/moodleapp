@@ -221,4 +221,7 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
     txtCommentFocus() {
         this.txtCommentClass = 'txt-comment-focus';
     }
+    txtCommentBlur() {
+        this.txtCommentClass = '';
+    }
 }
