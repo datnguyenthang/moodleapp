@@ -118,7 +118,7 @@
                 <ion-grid text-wrap *ngIf="pageButtons && pageButtons.length" class="addon-mod_lesson-pagebuttons">
                     <ion-row align-items-center>
                         <ion-col *ngFor="let button of pageButtons" col-12 col-md-6 col-lg-3 col-xl>
-                            <a ion-button block outline text-wrap [id]="button.id" (click)="buttonClicked(button.data)" class="button-no-uppercase">{{ button.content }}</a>
+                            <a ion-button block outline text-wrap [id]="button.id" (click)="buttonClicked(button.data)" class="button-no-uppercase"><core-format-text text="{{ button.content }}"></core-format-text></a>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
