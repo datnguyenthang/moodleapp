@@ -21,6 +21,8 @@ import { AddonLandingProvider } from '../../providers/landing';
 import { CoreDomUtilsProvider } from '@providers/utils/dom';
 import { CoreMainMenuProvider } from '@core/mainmenu/providers/mainmenu';
 import { CoreMainMenuHandlerData, CoreMainMenuDelegate } from '@core/mainmenu/providers/delegate';
+import { DomSanitizer } from '@angular/platform-browser';
+import { CoreCourseHelperProvider } from '@core/course/providers/helper';
 
 /**
  * Page this show up about FE School.
@@ -46,15 +48,14 @@ export class AddonLandingMyLandingPage implements OnDestroy {
 
     handlersLoaded: any;
     handlers: CoreMainMenuHandlerData[];
+    allHandlers: CoreMainMenuHandlerData[];
 
     constructor(private menuDelegate: CoreMainMenuDelegate, private sitesProvider: CoreSitesProvider, private landingProvider: AddonLandingProvider,
-                private navCtrl: NavController, private domUtils: CoreDomUtilsProvider) {
+                private navCtrl: NavController, private domUtils: CoreDomUtilsProvider, protected mainMenuProvider: CoreMainMenuProvider,
+                private sanitizer: DomSanitizer, private courseHelper: CoreCourseHelperProvider) {
         this.loadSiteName();
         // this.landingProvider.initPopup();
-        this.landingProvider.getSlideData().then(result => {
-            this.sliders = result;
-            this.slideDatas = this.sliders.data;
-        });
+        this.loadSlideData();
     }
     /**
      * Go to specific page.
@@ -88,7 +89,7 @@ export class AddonLandingMyLandingPage implements OnDestroy {
      */
     doRefresh(refresher?: any): void {
         // this.landingProvider.initPopup();
-        this.loadCustomHandler();
+        this.initHandlers();
         this.loadSlideData();
         refresher.complete();
     }
@@ -97,36 +98,40 @@ export class AddonLandingMyLandingPage implements OnDestroy {
      */
     ionViewDidLoad(): void {
         this.landingLoaded = true;
-        this.loadCustomHandler();
-        this.loadSlideData();
-    }
 
-    loadCustomHandler(): void {
-        console.log('load Custom Handler');
         // Load the handlers.
         this.subscription = this.menuDelegate.getHandlers().subscribe((handlers) => {
-            // Calculate the main handlers to not display them in this view.
-            const mainHandlers = handlers.filter((handler) => {
-                return !handler.onlyInMore;
-            }).slice(0, CoreMainMenuProvider.NUM_MAIN_HANDLERS);
-
-            // Get only the handlers that don't appear in the main view.
-            this.handlers = [];
-
-            handlers.forEach((handler) => {
-                if (mainHandlers.indexOf(handler) == -1) {
-                    this.handlers.push(handler);
-                }
-            });
-
-            this.handlersLoaded = this.menuDelegate.areHandlersLoaded();
+            this.allHandlers = handlers;
+            this.initHandlers();
+            this.loadSlideData();
         });
+
+        window.addEventListener('resize', this.initHandlers.bind(this));
+    }
+
+    initHandlers(): void {
+        if (this.allHandlers) {
+            // Calculate the main handlers not to display them in this view.
+            const mainHandlers = this.allHandlers.filter((handler) => {
+                return !handler.onlyInMore;
+            }).slice(0, this.mainMenuProvider.getNumItems());
+            //const mainHandlers = this.allHandlers;
+            // Get only the handlers that don't appear in the main view.
+            this.handlers = this.allHandlers.filter((handler) => {
+                return mainHandlers.indexOf(handler) == -1;
+            });
+            this.handlersLoaded = this.menuDelegate.areHandlersLoaded();
+        }
     }
 
     loadSlideData(): void {
         this.landingProvider.getSlideData().then(result => {
             this.sliders = result;
             this.slideDatas = this.sliders.data;
+            
+            this.slideDatas.forEach((slide) => {
+                slide.link = this.sanitizer.bypassSecurityTrustUrl(slide.link);
+            });
         });
     }
 
@@ -137,5 +142,9 @@ export class AddonLandingMyLandingPage implements OnDestroy {
      */
     openHandler(handler: CoreMainMenuHandlerData): void {
         this.navCtrl.push(handler.page, handler.pageParams);
+    }
+
+    openActivity(moduleid?: number, courseid?: number, modname?: string) {
+        this.courseHelper.navigateToModule(moduleid, this.sitesProvider.getCurrentSiteId(), courseid, undefined, modname);
     }
 }
