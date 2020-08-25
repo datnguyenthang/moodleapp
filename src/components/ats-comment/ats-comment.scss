@@ -120,7 +120,7 @@ core-ats-comment {
     .block-input-reply-comment {
         box-shadow: 0 0px 20px #008446;
         border-top: 1px solid #0084459e !important;
-        height: 90vh;
+        height: calc(100vh - 70px);
         border-top-left-radius: 8px !important;
         border-top-right-radius: 8px !important;
         bottom: 0px;
