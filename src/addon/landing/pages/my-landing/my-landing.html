@@ -54,7 +54,7 @@
                 </div>
                 <ion-slides *ngIf="slideDatas && slideDatas.length" autoplay="3000" loop="true" pager="true">
                     <ion-slide *ngFor="let slide of slideDatas">
-                        <a (click)="openActivity(slide.moduleid, slide.courseid, slide.modname)">
+                        <a (click)="openLink(slide.moduleid, slide.courseid, slide.modname)">
                             <img class="lazy-loaded" [src]="slide.imageurl" >
                         </a>
                     </ion-slide>

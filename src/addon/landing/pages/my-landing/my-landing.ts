@@ -144,7 +144,8 @@ export class AddonLandingMyLandingPage implements OnDestroy {
         this.navCtrl.push(handler.page, handler.pageParams);
     }
 
-    openActivity(moduleid?: number, courseid?: number, modname?: string) {
-        this.courseHelper.navigateToModule(moduleid, this.sitesProvider.getCurrentSiteId(), courseid, undefined, modname);
+    openLink(moduleid?: number, courseid?: number, modname?: string) {
+        if (moduleid) this.courseHelper.navigateToModule(moduleid, this.sitesProvider.getCurrentSiteId(), courseid, undefined, modname);
+        else if (courseid) this.courseHelper.getAndOpenCourse(this.navCtrl, courseid);
     }
 }
