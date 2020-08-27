@@ -8,8 +8,8 @@
         },
         "release": {
             "codeSignIdentity": "iPhone Distribution",
-            "provisioningProfile": "70f699ad-faf1-4adE-8fea-9d84738fb306",
-            "developmentTeam": "FG35JLLMXX4A",
+            "provisioningProfile": "31dab43e-66c4-484d-b70a-bc6e4644b399",
+            "developmentTeam": "4Y2V39NSZ2",
             "packageType": "app-store"
         }
     }
