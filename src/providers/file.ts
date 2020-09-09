@@ -1252,7 +1252,8 @@ export class CoreFileProvider {
      * @return Converted src.
      */
     convertFileSrc(src: string): string {
-        return this.appProvider.isIOS() ? (<any> window).Ionic.WebView.convertFileSrc(src) : src;
+        //return this.appProvider.isIOS() ? (<any> window).Ionic.WebView.convertFileSrc(src) : src;
+        return this.appProvider.isIOS() ? window['Ionic']['WebView'].convertFileSrc(src) : src;
     }
 
     /**

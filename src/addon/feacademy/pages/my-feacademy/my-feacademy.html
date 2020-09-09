@@ -15,13 +15,24 @@
     </ion-refresher>
 
     <core-loading [hideUntil]="courses.loaded" class="core-loading-center">
-        <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'inprogress'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursesinprogress' | translate"></core-empty-box>
-        <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'future'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursesfuture' | translate"></core-empty-box>
-        <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'past'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursespast' | translate"></core-empty-box>
-        <div>
-            <core-courses-course-list-group class="feacademy" [categories]="filteredCategory">
-            </core-courses-course-list-group>
-        </div>
+        <ng-container *ngIf="isUnderConstruction == true; then underconstruction"></ng-container>
+        <ng-template #underconstruction>
+            <div class="item item-block" style="background-color: white;">
+                <img [src]="imageUrl" style="margin: auto;"/>
+            </div>
+        </ng-template>
+        
+        <ng-container *ngIf="isUnderConstruction == false; then coursecontent"></ng-container>
+        <ng-template #coursecontent>
+            <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'inprogress'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursesinprogress' | translate"></core-empty-box>
+            <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'future'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursesfuture' | translate"></core-empty-box>
+            <core-empty-box *ngIf="courses[courses.selected].length == 0 && courses.selected == 'past'" image="assets/img/icons/courses.svg" [message]="'core.courses.nocoursespast' | translate"></core-empty-box>
+            <div>
+                <core-courses-course-list-group class="feacademy" [categories]="filteredCategory">
+                </core-courses-course-list-group>
+            </div>
+        </ng-template>
+
     </core-loading>
 
 </ion-content>

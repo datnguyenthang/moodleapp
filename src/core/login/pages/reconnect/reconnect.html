@@ -21,7 +21,7 @@
         <h3 *ngIf="siteName" padding class="core-sitename"><core-format-text [text]="siteName" [filter]="false"></core-format-text></h3>
         <p class="core-siteurl">{{siteUrl}}</p>
 
-        <h3 class="ats-title">FE ATS</h3>
+        <h3 class="ats-title">{{sitename}}</h3>
 
         <p *ngIf="!isLoggedOut" class="core-login-reconnect-warning">
             <ion-icon padding name="alert"></ion-icon> {{ 'core.login.reconnectdescription' | translate }}

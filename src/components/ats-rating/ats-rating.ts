@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, Optional } from '@angular/core';
-import { NavController, NavParams, Item, ToastController } from 'ionic-angular';
+import { NavController, NavParams, Item, ToastController, AlertController } from 'ionic-angular';
 import { CoreEventsProvider } from '@providers/events';
 import { CoreSitesProvider } from '@providers/sites';
 import { CoreCourseProvider } from '@core/course/providers/course';
@@ -45,11 +45,14 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
     protected isReadonly = false;
     protected classShowRatingDetail = '';
     protected iconShowdetail = 'ios-arrow-down';
+    protected contextid = 0;
+    protected commentText = '';
+    protected commentId = 0;
 
     constructor(@Optional() protected navCtrl: NavController, protected prefetchDelegate: CoreCourseModulePrefetchDelegate,
             protected eventsProvider: CoreEventsProvider, protected sitesProvider: CoreSitesProvider,
             protected courseProvider: CoreCourseProvider, protected toastController: ToastController,
-            protected translate: TranslateService) {
+            protected translate: TranslateService, protected alertController: AlertController) {
             this.ratingData = { typeone: 0,
                 typetwo: 0,
                 typethree: 0,
@@ -100,6 +103,14 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
                         }).catch((error)=> {
                             console.log(error);
                         });
+                        this.getCommentData().then(data => {
+                            if (data) {
+                                this.contextid = data.contextid;
+                            }
+                        }).catch((error)=> {
+                            console.log(error);
+                        });
+
                         return this.isEnableRating;
                     }
                 });
@@ -147,35 +158,110 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
         });
     }
 
-    ratingChange(rating) {
-        this.ratingLoaded = false;
-        this.userVote = rating;
-        this.submitRating().then((data) => {
-            this.ratingLoaded = true;
-            const toast = this.toastController.create({
-                message: this.translate.instant('components.ats-rating.label.submitsuccess'),
-                duration: 5000
-            });
-            toast.present();
+    getCommentData(siteId?: string): Promise<any> {
+        return this.sitesProvider.getSite(siteId).then((site) => {
+            const data = {
+                courseid: this.courseId,
+                cmid: this.module.id,
+                pagenumber: -1
+            };
 
-            this.getRatingData().then(data => {
-                if (data.length > 0) {
-                    this.ratingData = data[0];
-                    this.userVote = this.ratingData.uservote;
-                    this.totalRating = this.ratingData.total;
-                    this.averageRating = (this.ratingData.typeone * 1 
-                                            + this.ratingData.typetwo * 2 
-                                            + this.ratingData.typethree * 3
-                                            + this.ratingData.typefour * 4
-                                            + this.ratingData.typefive * 5) / this.ratingData.total;
+            const preSets = {
+                getFromCache: false,
+                saveToCache: false,
+                emergencyCache: false,
+            };
 
-                    this.averageRating = Math.round(this.averageRating * 10)/10;
-                    this.isReadonly = this.userVote > 0;
-                }
-            }).catch((error)=> {
+            return site.read('block_socialcomments_ats_get_commentspage', data, preSets).catch((error) => {
                 console.log(error);
             });
         });
+    }
+
+    ratingChange(rating) {
+        this.ratingLoaded = false;
+        this.userVote = rating;
+        if (this.userVote <= 3) {
+            const alert = this.alertController.create({
+                title: this.translate.instant('components.ats-rating.commenttitle'),
+                message: this.translate.instant('components.ats-rating.commentmessage'),
+                enableBackdropDismiss: false,
+                inputs: [
+                    {
+                        name: 'txtComment',
+                        id: 'txtComment',
+                        type: 'textarea',
+                        placeholder: this.translate.instant('components.ats-comment.text.writecomment')
+                    }
+                ],
+                buttons: [
+                    {
+                        text: this.translate.instant('core.cancel'),
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: () => {
+                            this.ratingLoaded = true;
+                            this.userVote = 0;
+                        }
+                    }, 
+                    {
+                        text: this.translate.instant('core.submit'),
+                        handler: (data) => {
+                            if (data.txtComment.length < 20) {
+                                return false;
+                            }
+                            this.commentText = data.txtComment;
+                            this.postComment().then(data => {
+                                if (data) {
+                                    this.commentId = data.id;
+                                    this.submitRating().then((data) => {
+                                        this.ratingLoaded = true;
+                                        this.checkEnableRating();
+                                        const toast = this.toastController.create({
+                                            message: this.translate.instant('components.ats-rating.label.submitsuccess'),
+                                            duration: 5000
+                                        });
+                                        toast.present();
+                                    });
+                                }
+                            }).catch((error) => {
+                                console.log(error);
+                            });;
+                            this.ratingLoaded = true;
+                        }
+                    }
+                ]
+            });
+            alert.present();
+        } else {
+            this.submitRating().then((data) => {
+                this.ratingLoaded = true;
+                const toast = this.toastController.create({
+                    message: this.translate.instant('components.ats-rating.label.submitsuccess'),
+                    duration: 5000
+                });
+                toast.present();
+    
+                this.getRatingData().then(data => {
+                    if (data.length > 0) {
+                        this.ratingData = data[0];
+                        this.userVote = this.ratingData.uservote;
+                        this.totalRating = this.ratingData.total;
+                        this.averageRating = (this.ratingData.typeone * 1 
+                                                + this.ratingData.typetwo * 2 
+                                                + this.ratingData.typethree * 3
+                                                + this.ratingData.typefour * 4
+                                                + this.ratingData.typefive * 5) / this.ratingData.total;
+    
+                        this.averageRating = Math.round(this.averageRating * 10)/10;
+                        this.isReadonly = this.userVote > 0;
+                    }
+                }).catch((error)=> {
+                    console.log(error);
+                });
+            });
+        }
+        
     }
 
     submitRating(siteId?: string, rating ?: number): Promise<string> {
@@ -185,15 +271,27 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
 
             if (this.ratingData && this.ratingData.uservote > 0) {
                 func = 'update';
-            } 
-            
-            const data = {
+            }
+
+            var data = {
                 func: func,
                 userid: this.sitesProvider.getCurrentSiteUserId(),
                 courseid: this.courseId,
                 cmid: this.module.id,
-                vote: this.userVote
+                vote: this.userVote,
+                commentid: 0
             };
+
+            if (this.commentId > 0) {
+                data = {
+                    func: func,
+                    userid: this.sitesProvider.getCurrentSiteUserId(),
+                    courseid: this.courseId,
+                    cmid: this.module.id,
+                    vote: this.userVote,
+                    commentid: this.commentId
+                };
+            }
 
             const preSets = {
                 getFromCache: false,
@@ -202,6 +300,27 @@ export class CoreATSRatingComponent implements OnInit, OnDestroy {
             };
 
             return site.write('block_course_rate_update_db', data, preSets).catch((error) => {
+                console.log(error);
+            });
+        });
+    }
+
+    postComment(siteId?: string): Promise<any> {
+        return this.sitesProvider.getSite(siteId).then((site) => {
+            const data = {
+                contextid: this.contextid,
+                content: this.commentText,
+                groupid: 0,
+                id: 0
+            };
+
+            const preSets = {
+                getFromCache: false,
+                saveToCache: false,
+                emergencyCache: false,
+            };
+
+            return site.read('block_socialcomments_save_comment', data, preSets).catch((error) => {
                 console.log(error);
             });
         });

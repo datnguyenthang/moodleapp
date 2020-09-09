@@ -4,6 +4,7 @@
         <ion-list class="block-comment">
             <ion-list-header lines="inset">
               <ion-label>{{ 'components.ats-comment.title' | translate }}</ion-label>
+              <ion-badge color="primary">11</ion-badge>
             </ion-list-header>
             <div class="item item-block item-ios input-comment {{ replyClass }}  {{txtCommentClass}}">
                 <div *ngIf="postReplied.postid > 0; then blockPostReplied"></div>

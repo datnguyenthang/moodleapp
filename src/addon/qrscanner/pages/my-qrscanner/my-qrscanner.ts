@@ -53,11 +53,20 @@ export class AddonQRScannerPage implements OnDestroy {
       this.navCtrl.setRoot("CoreLoginInitPage");
     }
     scanQR(): void {
+      /*
       (window.document.querySelector('.closeCamera') as HTMLElement).classList.remove('hide');
       this.barcodeScanner.scan().then(barcodeData => {
         this.dataHandle(barcodeData.text);
       }).catch(err => {
         console.log('Error', err);
+      });
+      */
+      //////////
+      // Scan for a QR code.
+      this.utils.scanQR().then((text) => {
+          if (text) {
+            this.dataHandle(text);
+          }
       });
     }
     dataHandle(data: any): void {

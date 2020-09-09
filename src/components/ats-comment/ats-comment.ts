@@ -44,7 +44,7 @@ export class CoreATSCommentComponent implements OnInit, OnDestroy {
     protected isEnableComment = false;
     protected commentData: any;
     protected commentText = '';
-    protected contextid = 0;
+    public contextid = 0;
     protected commentspage: any;
     protected comments: any;
     protected listPost = [];

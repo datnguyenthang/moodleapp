@@ -86,3 +86,10 @@ core-ats-rating {
     }
     
 }
+ion-alert {
+    .rating-comment-errors {
+        input {
+            border-color: red;
+        }
+    }
+}

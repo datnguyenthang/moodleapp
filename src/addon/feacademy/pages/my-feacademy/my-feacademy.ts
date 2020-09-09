@@ -70,6 +70,9 @@ export class AddonFeAcademyMyFeAcademyPage implements OnDestroy {
         future: {}
     };
 
+    imageUrl = '';
+    isUnderConstruction = false;
+
     protected prefetchIconsInitialized = false;
     protected isDestroyed;
     protected updateSiteObserver;
@@ -240,6 +243,18 @@ export class AddonFeAcademyMyFeAcademyPage implements OnDestroy {
      */
     protected fetchUserCourses(): Promise<any> {
         return this.landingProvider.getUserCourses(null, null, AddonLandingProvider.TYPE_FE_ACADEMY).then((courses) => {
+            
+            // NGHE-TC: hide feacademy
+            if (courses) {
+                if (courses[0].underconstruction) {
+                    this.isUnderConstruction = true;
+                    this.imageUrl = courses[0].imageurl;
+                    courses = [];
+                    return courses;
+                }
+            }
+            // ============
+            
             const promises = [],
                 courseIds = courses.map((course) => {
                 return course.id;
