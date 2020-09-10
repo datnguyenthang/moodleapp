@@ -3,5 +3,5 @@
     "label.rating": "rating total",
     "label.submitsuccess": "Rating success",
     "commenttitle": "Comment",
-    "commentmessage": "Your comment"
+    "commentmessage": "Your comment (minlength 20 character)"
 }

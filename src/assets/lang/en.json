@@ -1388,7 +1388,7 @@
     "components.ats-comment.label.reply": "Reply",
     "components.ats-comment.text.writecomment": "Write a comment...",
     "components.ats-comment.title": "Comment",
-    "components.ats-rating.commentmessage": "Your comment",
+    "components.ats-rating.commentmessage": "Your comment (minlength 20 character)",
     "components.ats-rating.commenttitle": "Comment",
     "components.ats-rating.label.rating": "rating total",
     "components.ats-rating.label.submitsuccess": "Rating success",

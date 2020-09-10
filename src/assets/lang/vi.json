@@ -593,7 +593,7 @@
     "components.ats-comment.label.reply": "Trả lời",
     "components.ats-comment.text.writecomment": "Viết bình luận...",
     "components.ats-comment.title": "Bình luận",
-    "components.ats-rating.commentmessage": "Bình luận của bạn",
+    "components.ats-rating.commentmessage": "Bình luận của bạn (ít nhất 20 ký tự)",
     "components.ats-rating.commenttitle": "Bình luận",
     "components.ats-rating.label.rating": "lượt đánh giá",
     "components.ats-rating.label.submitsuccess": "Đánh giá thành công",
