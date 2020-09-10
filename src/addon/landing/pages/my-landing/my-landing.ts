@@ -106,6 +106,8 @@ export class AddonLandingMyLandingPage implements OnDestroy {
             this.loadSlideData();
         });
 
+        this.checkSiteVersion();
+
         window.addEventListener('resize', this.initHandlers.bind(this));
     }
 
@@ -133,6 +135,22 @@ export class AddonLandingMyLandingPage implements OnDestroy {
                 slide.link = this.sanitizer.bypassSecurityTrustUrl(slide.link);
             });
         });
+    }
+
+    async checkSiteVersion() {
+        const currentSite = this.sitesProvider.getCurrentSite();
+        const data = {};
+        const preSets = {
+            getFromCache: false,
+            saveToCache: false,
+            emergencyCache: false,
+        };
+
+        const config = await currentSite.read('tool_mobile_get_public_config', data, preSets);
+        const siteId = currentSite.getId();
+        currentSite.setId('');
+        this.sitesProvider.checkRequiredMinimumVersion(config);
+        currentSite.setId(siteId);
     }
 
     /**
