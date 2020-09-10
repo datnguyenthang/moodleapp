@@ -1123,6 +1123,9 @@ ion-app.app-root {
   a.autolink.glossary:hover {
     cursor: help;
   }
+  .item-dimmed {
+    display: none;
+  }
 }
 
 @each $color-name, $color-base, $color-contrast in get-colors($colors) {
