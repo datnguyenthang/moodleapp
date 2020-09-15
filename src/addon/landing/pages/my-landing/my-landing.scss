@@ -171,8 +171,9 @@ page-addon-landing-my-landing {
         }
         @media (min-width: 1024px) and (min-height: 768px) {
             .box {
-                max-width: 60rem;
+                max-width: 70vw;
                 .row {
+                    margin-bottom: 5rem;
                     .col {
                         .item {
                             width: 20rem;
