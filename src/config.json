@@ -54,7 +54,7 @@
     "forceColorScheme": "",
     "ioswebviewscheme": "moodleappfs",
     "appstores": {
-        "android": "vn.com.fecredit.training",
+        "android": "vn.com.fecredit.training.ats",
         "ios": "1322318729",
         "windows": "moodle-desktop\/9p9bwvhdc8c8",
         "mac": "1255924440",
