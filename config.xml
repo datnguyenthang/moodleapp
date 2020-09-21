@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="39200" id="vn.com.fecredit.training" ios-CFBundleVersion="3.9.2.0" version="3.9.2" versionCode="39200" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="39200" id="vn.com.fecredit.training.ats" ios-CFBundleVersion="3.9.2.0" version="3.9.2" versionCode="39200" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>FE Training</name>
     <description>Training for FE Workforce</description>
     <author email="dat.nguyen.2@fecredit.com.vn" href="https://training.fecredit.com.vn">ATS team</author>
