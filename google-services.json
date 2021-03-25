@@ -1,42 +1,44 @@
 {
   "project_info": {
-    "project_number": "",
-    "firebase_url": "",
-    "project_id": "",
-    "storage_bucket": ""
+    "project_number": "1044014010445",
+    "project_id": "ats-training-295908",
+    "storage_bucket": "ats-training-295908.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:111111111111:android:1111111111111111",
+        "mobilesdk_app_id": "1:1044014010445:android:a2c073a6a60cf261b7cc04",
         "android_client_info": {
           "package_name": "vn.com.fecredit.training.ats"
         }
       },
       "oauth_client": [
         {
-          "client_id": "",
+          "client_id": "1044014010445-rmfnk79o14gasm2q2pc10judq5v85e4p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": ""
-        },
-        {
-          "current_key": ""
+          "current_key": "AIzaSyDaRCU0s2KoDulYpmGxUNz3wGJHGxza0hI"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1044014010445-rmfnk79o14gasm2q2pc10judq5v85e4p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1044014010445-p74691b4keaa9gsdik8clih1ugs41cs6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.com.fecredit.training.ats",
+                "app_store_id": "1322318729"
+              }
+            }
+          ]
         }
       }
     }
