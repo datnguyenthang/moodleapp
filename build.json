@@ -17,5 +17,17 @@
                 "LD_RUNPATH_SEARCH_PATHS = \"@executable_path/Frameworks\""
             ]
         }
+    },
+    "android": {
+
+        "release": {
+            "keystore": "../android.keystore",
+            "storePassword": "@Aa123456",
+            "alias": "ATS",
+            "password" : "@Aa123456",
+            "keystoreType": "",
+            "packageType": "bundle"
+        }
     }
+    
 }
