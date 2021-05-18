@@ -1,5 +1,5 @@
 {
-  "name": "moodlemobile",
+  "name": "atsmobile",
   "version": "3.9.3",
   "description": "The official app for Moodle.",
   "author": {
@@ -185,7 +185,7 @@
       "cordova-plugin-badge": {},
       "cordova-plugin-camera": {},
       "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "moodlemobile"
+        "URL_SCHEME": "atsmobile"
       },
       "cordova-plugin-device": {},
       "cordova-plugin-file": {},
@@ -224,7 +224,7 @@
   },
   "main": "desktop/electron.js",
   "build": {
-    "appId": "com.moodle.moodledesktop",
+    "appId": "vn.com.training.fecredit.ats",
     "productName": "Moodle Desktop",
     "files": [
       "desktop/electron.js",
@@ -248,7 +248,7 @@
       {
         "name": "Moodle Mobile URL",
         "schemes": [
-          "moodlemobile"
+          "atsmobile"
         ],
         "role": "Viewer"
       }
@@ -259,7 +259,7 @@
       "category": "public.app-category.education",
       "icon": "resources/desktop/icon.icns",
       "target": "mas",
-      "bundleVersion": "3.9.2",
+      "bundleVersion": "3.9.3",
       "extendInfo": {
         "ElectronTeamID": "2NU57U5PAW"
       }
