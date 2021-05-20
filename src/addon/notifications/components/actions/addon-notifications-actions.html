@@ -1,3 +1,4 @@
+<!--
 <ion-row *ngIf="actions && actions.length > 0" justify-content-around>
     <ion-col *ngFor="let action of actions">
         <button ion-button icon-left clear small block (click)="action.action(undefined, navCtrl)">
@@ -5,4 +6,11 @@
             {{ action.message | translate }}
         </button>
     </ion-col>
+</ion-row>
+-->
+<ion-row *ngIf="linkmobilehandler" justify-content-around>
+    <button ion-button full color="success"  (click)="pushToCustomHanlerClick(title, component, method)">
+        <ion-icon name="game-controller-b"></ion-icon>&nbsp;&nbsp;
+        <span>{{ buttontext }}</span>
+    </button>
 </ion-row>

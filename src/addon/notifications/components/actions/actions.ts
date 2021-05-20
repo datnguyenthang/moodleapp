@@ -16,6 +16,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CoreContentLinksDelegate, CoreContentLinksAction } from '@core/contentlinks/providers/delegate';
 import { CoreSitesProvider } from '@providers/sites';
+import { CoreContentLinksHelperProvider } from '@core/contentlinks/providers/helper';
 
 /**
  * Component that displays the actions for a notification.
@@ -29,19 +30,33 @@ export class AddonNotificationsActionsComponent implements OnInit {
     @Input() courseId: number;
     @Input() data?: any; // Extra data to handle the URL.
 
+    linkmobilehandler: any;
+    title: any;
+    component: any;
+    method: any;
+    buttontext: any;
+
     actions: CoreContentLinksAction[] = [];
 
     constructor(private contentLinksDelegate: CoreContentLinksDelegate, private sitesProvider: CoreSitesProvider,
-            public navCtrl: NavController) {}
+            public navCtrl: NavController, private contentlinkhelperprovider: CoreContentLinksHelperProvider) {}
 
     /**
      * Component being initialized.
      */
     ngOnInit(): void {
-        if (!this.contextUrl && (!this.data || !this.data.appurl)) {
+        if (!this.contextUrl && (!this.data || !this.data.appurl) && !this.data.linkmobilehandler) {
             // No URL, nothing to do.
             return;
         }
+
+        if (this.data.linkmobilehandler != undefined) {
+            this.linkmobilehandler = this.data.linkmobilehandler;
+            this.title = this.data.title;
+            this.component = this.data.component;
+            this.method = this.data.method;
+            this.buttontext = this.data.buttontext;
+        } else this.linkmobilehandler = '';
 
         let promise;
 
@@ -84,5 +99,18 @@ export class AddonNotificationsActionsComponent implements OnInit {
         const url = (this.data && this.data.appurl) || this.contextUrl;
 
         this.sitesProvider.getCurrentSite().openInBrowserWithAutoLogin(url);
+    }
+
+    protected pushToCustomHanlerClick(title: string, component?: string, method?: string, args?: any, jsData?: any, preSets?: any): void {
+
+        this.navCtrl.push('CoreSitePluginsPluginPage', {
+            title: title,
+            component: component,
+            method: method,
+            args: args,
+            initResult: {},
+            jsData: jsData,
+            preSets: preSets
+        });
     }
 }
